@@ -1,0 +1,1484 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f49f345ca93, pid=18314, tid=139955544352512
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_74-b02) (build 1.8.0_74-b02)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.74-b02 mixed mode linux-amd64 compressed oops)
+# Problematic frame:
+# V  [libjvm.so+0x984a93]  oopDesc* PSPromotionManager::copy_to_survivor_space<false>(oopDesc*)+0x143
+#
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f49ec02d800):  GCTaskThread [stack: 0x00007f49f0716000,0x00007f49f0817000] [id=18376]
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 1 (SEGV_MAPERR), si_addr: 0x000000018014c790
+
+Registers:
+RAX=0x00007f49f3a59990, RBX=0x00000000fbb7e75c, RCX=0x0000000000000003, RDX=0x0000000000000001
+RSP=0x00007f49f0815b30, RBP=0x00007f49f0815ba0, RSI=0x00000000eeacb348, RDI=0x000000018014c788
+R8 =0x00000000fbb7e840, R9 =0x00000000fbb7fe00, R10=0x00007f49f3a7dd79, R11=0x00007f49f3c4efb0
+R12=0x00000000eeacb348, R13=0x0000000000000005, R14=0x0000000000000000, R15=0x00007f49ec208fe8
+RIP=0x00007f49f345ca93, EFLAGS=0x0000000000010206, CSGSFS=0x0000000000000033, ERR=0x0000000000000004
+  TRAPNO=0x000000000000000e
+
+Top of Stack: (sp=0x00007f49f0815b30)
+0x00007f49f0815b30:   00000000fa36f4fd 00007f49f3a7dd79
+0x00007f49f0815b40:   0000000100022f38 00007f49ec208f80
+0x00007f49f0815b50:   00007f49f0815bb0 00007f49f311c8e0
+0x00007f49f0815b60:   00000000fbb77e10 0000000000001000
+0x00007f49f0815b70:   00007f49f42a73f0 00000000fbb7e75c
+0x00007f49f0815b80:   00007f49ec208f80 00007f49f3a59980
+0x00007f49f0815b90:   0000000000000000 00007f49ec208fe8
+0x00007f49f0815ba0:   00007f49f0815c90 00007f49f345c318
+0x00007f49f0815bb0:   00007f49f0815c10 00007f49f0815c20
+0x00007f49f0815bc0:   00007f49f0815c30 00007f49f0815bf0
+0x00007f49f0815bd0:   00007f49f0815c00 00007f49f0815c50
+0x00007f49f0815be0:   01000000d1410200 00007f49ec209018
+0x00007f49f0815bf0:   00000000ef630d48 00007f4964011805
+0x00007f49f0815c00:   0000000000000000 0000000000000003
+0x00007f49f0815c10:   00007f49f0815c90 00007f49f3460ce0
+0x00007f49f0815c20:   00005807000027cd 00007f49f3a7dd79
+0x00007f49f0815c30:   000054f200002615 00007f49f0815c50
+0x00007f49f0815c40:   000054f300002615 00007f49ec209001
+0x00007f49f0815c50:   00000000fbb7e75d 00007f49f0815cb0
+0x00007f49f0815c60:   00007f499c0cb210 00000000ee15d440
+0x00007f49f0815c70:   00007f49ec2094e0 0000000000000008
+0x00007f49f0815c80:   00007f49f0815cb0 00007f49f0815cbc
+0x00007f49f0815c90:   00007f49f0815cf0 00007f49f346011e
+0x00007f49f0815ca0:   00007f499c0cb9f0 00007f49ec208f80
+0x00007f49f0815cb0:   00000000ee15d442 09549811f30ab8a7
+0x00007f49f0815cc0:   00007f49f0815cf0 00007f499c0cb9f0
+0x00007f49f0815cd0:   00007f49ec02d800 0000000000000001
+0x00007f49f0815ce0:   00007f49ec02dec0 00007f49f361c81a
+0x00007f49f0815cf0:   00007f49f0815e00 00007f49f30ac59f
+0x00007f49f0815d00:   0000000000000000 00007f49f0815d40
+0x00007f49f0815d10:   00007f49f0815dc0 0000000000000000
+0x00007f49f0815d20:   00007f49ec02df00 00007f49ec02df10 
+
+Instructions: (pc=0x00007f49f345ca93)
+0x00007f49f345ca73:   83 e0 07 48 83 f8 05 75 d3 31 db eb d6 48 8b 05
+0x00007f49f345ca83:   21 df 5d 00 8b 7e 08 8b 48 08 48 d3 e7 48 03 38
+0x00007f49f345ca93:   8b 77 08 83 fe 00 0f 8f 0a ff ff ff 0f 85 4b 02
+0x00007f49f345caa3:   00 00 0f 1f 00 48 8b 07 4c 89 e6 4c 89 55 98 ff 
+
+Register to memory mapping:
+
+RAX=0x00007f49f3a59990: <offset 0xf81990> in /usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/libjvm.so at 0x00007f49f2ad8000
+RBX=0x00000000fbb7e75c is an unknown value
+RCX=0x0000000000000003 is an unknown value
+RDX=0x0000000000000001 is an unknown value
+RSP=0x00007f49f0815b30 is an unknown value
+RBP=0x00007f49f0815ba0 is an unknown value
+RSI=0x00000000eeacb348 is an oop
+
+[error occurred during error reporting (printing register info), id 0xb]
+
+Stack: [0x00007f49f0716000,0x00007f49f0817000],  sp=0x00007f49f0815b30,  free space=1022k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x984a93]  oopDesc* PSPromotionManager::copy_to_survivor_space<false>(oopDesc*)+0x143
+V  [libjvm.so+0x984318]  PSPromotionManager::drain_stacks_depth(bool)+0x7e8
+V  [libjvm.so+0x98811e]  StealTask::do_it(GCTaskManager*, unsigned int)+0x19e
+V  [libjvm.so+0x5d459f]  GCTaskThread::run()+0x12f
+V  [libjvm.so+0x91d9d8]  java_start(Thread*)+0x108
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007f4964077800 JavaThread "pool-87-thread-8" [_thread_blocked, id=9777, stack(0x00007f49cc8f9000,0x00007f49cc9fa000)]
+  0x00007f4964076800 JavaThread "pool-87-thread-7" [_thread_blocked, id=9776, stack(0x00007f49bb6f7000,0x00007f49bb7f8000)]
+  0x00007f4964075000 JavaThread "pool-87-thread-6" [_thread_blocked, id=9775, stack(0x00007f49b8fea000,0x00007f49b90eb000)]
+  0x00007f4964074000 JavaThread "pool-87-thread-5" [_thread_blocked, id=9774, stack(0x00007f49cccfd000,0x00007f49ccdfe000)]
+  0x00007f4964073800 JavaThread "pool-87-thread-4" [_thread_blocked, id=9773, stack(0x00007f49b90eb000,0x00007f49b91ec000)]
+  0x00007f4964012800 JavaThread "pool-87-thread-3" [_thread_blocked, id=9772, stack(0x00007f49bb5f6000,0x00007f49bb6f7000)]
+  0x00007f4964011800 JavaThread "pool-87-thread-2" [_thread_blocked, id=9771, stack(0x00007f49cc5f6000,0x00007f49cc6f7000)]
+  0x00007f49640a0000 JavaThread "pool-87-thread-1" [_thread_blocked, id=9770, stack(0x00007f49bbafb000,0x00007f49bbbfc000)]
+  0x00007f497402d000 JavaThread "application-akka.actor.default-dispatcher-3" [_thread_blocked, id=9209, stack(0x00007f49cceff000,0x00007f49cd000000)]
+  0x00007f497402b800 JavaThread "application-scheduler-1" [_thread_blocked, id=9207, stack(0x00007f49bb9fa000,0x00007f49bbafb000)]
+  0x00007f497402a800 JavaThread "net.sf.ehcache.CacheManager@1e955dff" daemon [_thread_blocked, id=9205, stack(0x00007f49bb8f9000,0x00007f49bb9fa000)]
+  0x00007f4954058000 JavaThread "Timer-0" daemon [_thread_blocked, id=31153, stack(0x00007f49b8de8000,0x00007f49b8ee9000)]
+  0x00007f495826d000 JavaThread "Scala Presentation Compiler []" daemon [_thread_blocked, id=30273, stack(0x00007f49bb7f8000,0x00007f49bb8f9000)]
+  0x00007f4960af4800 JavaThread "New I/O server boss #25" [_thread_in_native, id=18500, stack(0x00007f49bbbfc000,0x00007f49bbcfd000)]
+  0x00007f4960ae2000 JavaThread "New I/O worker #24" [_thread_in_native, id=18499, stack(0x00007f49bbcfd000,0x00007f49bbdfe000)]
+  0x00007f4960ab7000 JavaThread "New I/O worker #23" [_thread_in_native, id=18498, stack(0x00007f49bbdfe000,0x00007f49bbeff000)]
+  0x00007f4960a8c000 JavaThread "New I/O worker #22" [_thread_in_native, id=18497, stack(0x00007f49bbeff000,0x00007f49bc000000)]
+  0x00007f4960a61000 JavaThread "New I/O worker #21" [_thread_in_native, id=18496, stack(0x00007f49c4013000,0x00007f49c4114000)]
+  0x00007f4960a36000 JavaThread "New I/O worker #20" [_thread_in_native, id=18495, stack(0x00007f49c4114000,0x00007f49c4215000)]
+  0x00007f4960a0b000 JavaThread "New I/O worker #19" [_thread_in_native, id=18494, stack(0x00007f49c4215000,0x00007f49c4316000)]
+  0x00007f49609e0000 JavaThread "New I/O worker #18" [_thread_in_native, id=18493, stack(0x00007f49c4316000,0x00007f49c4417000)]
+  0x00007f49609b5000 JavaThread "New I/O worker #17" [_thread_blocked, id=18492, stack(0x00007f49c4417000,0x00007f49c4518000)]
+  0x00007f496098a000 JavaThread "New I/O worker #16" [_thread_in_native, id=18491, stack(0x00007f49c4518000,0x00007f49c4619000)]
+  0x00007f496095e800 JavaThread "New I/O worker #15" [_thread_in_native, id=18490, stack(0x00007f49c4619000,0x00007f49c471a000)]
+  0x00007f4960934000 JavaThread "New I/O worker #14" [_thread_in_native, id=18489, stack(0x00007f49c471a000,0x00007f49c481b000)]
+  0x00007f4960909000 JavaThread "New I/O worker #13" [_thread_in_native, id=18488, stack(0x00007f49c481b000,0x00007f49c491c000)]
+  0x00007f4960754000 JavaThread "New I/O worker #12" [_thread_in_native, id=18487, stack(0x00007f49c491c000,0x00007f49c4a1d000)]
+  0x00007f4960752000 JavaThread "New I/O worker #11" [_thread_in_native, id=18486, stack(0x00007f49c4a1d000,0x00007f49c4b1e000)]
+  0x00007f4960750800 JavaThread "New I/O worker #10" [_thread_in_native, id=18485, stack(0x00007f49c4b1e000,0x00007f49c4c1f000)]
+  0x00007f496074e800 JavaThread "New I/O worker #9" [_thread_in_native, id=18484, stack(0x00007f49c4c1f000,0x00007f49c4d20000)]
+  0x00007f496074d000 JavaThread "New I/O worker #8" [_thread_in_native, id=18483, stack(0x00007f49c4d20000,0x00007f49c4e21000)]
+  0x00007f496074b000 JavaThread "New I/O worker #7" [_thread_in_native, id=18482, stack(0x00007f49c4e21000,0x00007f49c4f22000)]
+  0x00007f4960749000 JavaThread "New I/O worker #6" [_thread_in_native, id=18481, stack(0x00007f49c4f22000,0x00007f49c5023000)]
+  0x00007f49606ee800 JavaThread "New I/O worker #5" [_thread_in_native, id=18480, stack(0x00007f49c5023000,0x00007f49c5124000)]
+  0x00007f49606ed000 JavaThread "New I/O worker #4" [_thread_in_native, id=18479, stack(0x00007f49c5124000,0x00007f49c5225000)]
+  0x00007f49606f4800 JavaThread "New I/O worker #3" [_thread_in_native, id=18478, stack(0x00007f49c5225000,0x00007f49c5326000)]
+  0x00007f49606e0000 JavaThread "New I/O worker #2" [_thread_in_native, id=18477, stack(0x00007f49c5326000,0x00007f49c5427000)]
+  0x00007f49606e9000 JavaThread "New I/O worker #1" [_thread_in_native, id=18476, stack(0x00007f49c5427000,0x00007f49c5528000)]
+  0x00007f49606bc800 JavaThread "application-akka.actor.default-dispatcher-3" [_thread_blocked, id=18474, stack(0x00007f49c5829000,0x00007f49c592a000)]
+  0x00007f4960696800 JavaThread "application-scheduler-1" [_thread_blocked, id=18472, stack(0x00007f49c5a2b000,0x00007f49c5b2c000)]
+  0x00007f496052f800 JavaThread "sbt-play-watch-service" daemon [_thread_blocked, id=18470, stack(0x00007f49ccafb000,0x00007f49ccbfc000)]
+  0x00007f49604d8000 JavaThread "Thread-1" daemon [_thread_in_native, id=18469, stack(0x00007f49cc7f8000,0x00007f49cc8f9000)]
+  0x00007f49eded3800 JavaThread "pool-4-thread-1" [_thread_in_native, id=18451, stack(0x00007f49cc9fa000,0x00007f49ccafb000)]
+  0x00007f49585c6800 JavaThread "sbt-web-akka.actor.default-dispatcher-4" [_thread_blocked, id=18449, stack(0x00007f49ccdfe000,0x00007f49cceff000)]
+  0x00007f49ede3b800 JavaThread "sbt-web-scheduler-1" [_thread_blocked, id=18446, stack(0x00007f49cc4f5000,0x00007f49cc5f6000)]
+  0x00007f49ec271000 JavaThread "Service Thread" daemon [_thread_blocked, id=18386, stack(0x00007f49cf61b000,0x00007f49cf71c000)]
+  0x00007f49ec254000 JavaThread "C1 CompilerThread3" daemon [_thread_blocked, id=18385, stack(0x00007f49cf71c000,0x00007f49cf81d000)]
+  0x00007f49ec252000 JavaThread "C2 CompilerThread2" daemon [_thread_blocked, id=18384, stack(0x00007f49cf81d000,0x00007f49cf91e000)]
+  0x00007f49ec250000 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=18383, stack(0x00007f49d40e1000,0x00007f49d41e2000)]
+  0x00007f49ec24d000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=18382, stack(0x00007f49d41e2000,0x00007f49d42e3000)]
+  0x00007f49ec24b800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=18381, stack(0x00007f49d42e3000,0x00007f49d43e4000)]
+  0x00007f49ec218000 JavaThread "Finalizer" daemon [_thread_blocked, id=18380, stack(0x00007f49d43e4000,0x00007f49d44e5000)]
+  0x00007f49ec213800 JavaThread "Reference Handler" daemon [_thread_blocked, id=18379, stack(0x00007f49d44e5000,0x00007f49d45e6000)]
+  0x00007f49ec009800 JavaThread "main" [_thread_blocked, id=18367, stack(0x00007f49f45b9000,0x00007f49f46ba000)]
+
+Other Threads:
+  0x00007f49ec20b800 VMThread [stack: 0x00007f49d45e6000,0x00007f49d46e7000] [id=18378]
+  0x00007f49ec274000 WatcherThread [stack: 0x00007f49cf51a000,0x00007f49cf61b000] [id=18387]
+
+=>0x00007f49ec02d800 (exited) GCTaskThread [stack: 0x00007f49f0716000,0x00007f49f0817000] [id=18376]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007f49ec0060c0] Threads_lock - owner thread: 0x00007f49ec20b800
+[0x00007f49ec0065c0] Heap_lock - owner thread: 0x00007f4964011800
+
+Heap:
+ PSYoungGen      total 248320K, used 157708K [0x00000000eab00000, 0x0000000100000000, 0x0000000100000000)
+  eden space 150016K, 100% used [0x00000000eab00000,0x00000000f3d80000,0x00000000f3d80000)
+  from space 98304K, 7% used [0x00000000f3d80000,0x00000000f45031f0,0x00000000f9d80000)
+  to   space 95232K, 39% used [0x00000000fa300000,0x00000000fc798668,0x0000000100000000)
+ ParOldGen       total 699392K, used 288717K [0x00000000c0000000, 0x00000000eab00000, 0x00000000eab00000)
+  object space 699392K, 41% used [0x00000000c0000000,0x00000000d19f3778,0x00000000eab00000)
+ Metaspace       used 153274K, capacity 156883K, committed 157056K, reserved 1177600K
+  class space    used 27120K, capacity 27948K, committed 28032K, reserved 1048576K
+
+Card table byte_map: [0x00007f49f1175000,0x00007f49f1376000] byte_map_base: 0x00007f49f0b75000
+
+Marking Bits: (ParMarkBitMap*) 0x00007f49f3a8d260
+ Begin Bits: [0x00007f49d6000000, 0x00007f49d7000000)
+ End Bits:   [0x00007f49d7000000, 0x00007f49d8000000)
+
+Polling page: 0x00007f49f46da000
+
+CodeCache: size=245760Kb used=80534Kb max_used=80539Kb free=165225Kb
+ bounds [0x00007f49dd000000, 0x00007f49e1f70000, 0x00007f49ec000000]
+ total_blobs=24218 nmethods=23628 adapters=495
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 60116.605 Thread 0x00007f49ec254000 30519       3       scala.collection.mutable.SetLike$class::update (24 bytes)
+Event: 60116.606 Thread 0x00007f49ec254000 nmethod 30519 0x00007f49df3df3d0 code [0x00007f49df3df560, 0x00007f49df3df858]
+Event: 60116.606 Thread 0x00007f49ec254000 30520       3       scala.collection.mutable.BitSet::$minus$eq (9 bytes)
+Event: 60116.606 Thread 0x00007f49ec254000 nmethod 30520 0x00007f49df3dec90 code [0x00007f49df3dee20, 0x00007f49df3df248]
+Event: 60116.606 Thread 0x00007f49ec254000 30521       3       scala.collection.mutable.BitSet::$minus$eq (8 bytes)
+Event: 60116.606 Thread 0x00007f49ec254000 nmethod 30521 0x00007f49df3e1510 code [0x00007f49df3e1680, 0x00007f49df3e1808]
+Event: 60116.606 Thread 0x00007f49ec254000 30522       3       scala.tools.nsc.typechecker.Typers$Typer$$anonfun$handlePolymorphicCall$1$2::apply (12 bytes)
+Event: 60116.606 Thread 0x00007f49ec254000 nmethod 30522 0x00007f49df3e09d0 code [0x00007f49df3e0b80, 0x00007f49df3e1308]
+Event: 60116.606 Thread 0x00007f49ec254000 30523       3       scala.tools.nsc.typechecker.Typers$Typer$$anonfun$handlePolymorphicCall$1$2::apply (5 bytes)
+Event: 60116.607 Thread 0x00007f49ec254000 nmethod 30523 0x00007f49e06aaa50 code [0x00007f49e06aabe0, 0x00007f49e06ab088]
+
+GC Heap History (10 events):
+Event: 59642.271 GC heap after
+Heap after GC invocations=41 (full 2):
+ PSYoungGen      total 232960K, used 38154K [0x00000000eab00000, 0x0000000100000000, 0x0000000100000000)
+  eden space 119296K, 0% used [0x00000000eab00000,0x00000000eab00000,0x00000000f1f80000)
+  from space 113664K, 33% used [0x00000000f1f80000,0x00000000f44c2998,0x00000000f8e80000)
+  to   space 106496K, 0% used [0x00000000f9800000,0x00000000f9800000,0x0000000100000000)
+ ParOldGen       total 699392K, used 279893K [0x00000000c0000000, 0x00000000eab00000, 0x00000000eab00000)
+  object space 699392K, 40% used [0x00000000c0000000,0x00000000d1155708,0x00000000eab00000)
+ Metaspace       used 151177K, capacity 154555K, committed 154752K, reserved 1177600K
+  class space    used 26676K, capacity 27464K, committed 27520K, reserved 1048576K
+}
+Event: 59643.029 GC heap before
+{Heap before GC invocations=42 (full 2):
+ PSYoungGen      total 232960K, used 157450K [0x00000000eab00000, 0x0000000100000000, 0x0000000100000000)
+  eden space 119296K, 100% used [0x00000000eab00000,0x00000000f1f80000,0x00000000f1f80000)
+  from space 113664K, 33% used [0x00000000f1f80000,0x00000000f44c2998,0x00000000f8e80000)
+  to   space 106496K, 0% used [0x00000000f9800000,0x00000000f9800000,0x0000000100000000)
+ ParOldGen       total 699392K, used 279893K [0x00000000c0000000, 0x00000000eab00000, 0x00000000eab00000)
+  object space 699392K, 40% used [0x00000000c0000000,0x00000000d1155708,0x00000000eab00000)
+ Metaspace       used 151659K, capacity 155009K, committed 155136K, reserved 1177600K
+  class space    used 26747K, capacity 27529K, committed 27648K, reserved 1048576K
+Event: 59643.041 GC heap after
+Heap after GC invocations=42 (full 2):
+ PSYoungGen      total 244224K, used 5007K [0x00000000eab00000, 0x0000000100000000, 0x0000000100000000)
+  eden space 137728K, 0% used [0x00000000eab00000,0x00000000eab00000,0x00000000f3180000)
+  from space 106496K, 4% used [0x00000000f9800000,0x00000000f9ce3f40,0x0000000100000000)
+  to   space 104960K, 0% used [0x00000000f3180000,0x00000000f3180000,0x00000000f9800000)
+ ParOldGen       total 699392K, used 280045K [0x00000000c0000000, 0x00000000eab00000, 0x00000000eab00000)
+  object space 699392K, 40% used [0x00000000c0000000,0x00000000d117b708,0x00000000eab00000)
+ Metaspace       used 151659K, capacity 155009K, committed 155136K, reserved 1177600K
+  class space    used 26747K, capacity 27529K, committed 27648K, reserved 1048576K
+}
+Event: 59809.894 GC heap before
+{Heap before GC invocations=43 (full 2):
+ PSYoungGen      total 244224K, used 142735K [0x00000000eab00000, 0x0000000100000000, 0x0000000100000000)
+  eden space 137728K, 100% used [0x00000000eab00000,0x00000000f3180000,0x00000000f3180000)
+  from space 106496K, 4% used [0x00000000f9800000,0x00000000f9ce3f40,0x0000000100000000)
+  to   space 104960K, 0% used [0x00000000f3180000,0x00000000f3180000,0x00000000f9800000)
+ ParOldGen       total 699392K, used 280045K [0x00000000c0000000, 0x00000000eab00000, 0x00000000eab00000)
+  object space 699392K, 40% used [0x00000000c0000000,0x00000000d117b708,0x00000000eab00000)
+ Metaspace       used 152182K, capacity 155617K, committed 155776K, reserved 1177600K
+  class space    used 26885K, capacity 27705K, committed 27776K, reserved 1048576K
+Event: 59809.904 GC heap after
+Heap after GC invocations=43 (full 2):
+ PSYoungGen      total 242688K, used 16908K [0x00000000eab00000, 0x0000000100000000, 0x0000000100000000)
+  eden space 137728K, 0% used [0x00000000eab00000,0x00000000eab00000,0x00000000f3180000)
+  from space 104960K, 16% used [0x00000000f3180000,0x00000000f4203200,0x00000000f9800000)
+  to   space 100864K, 0% used [0x00000000f9d80000,0x00000000f9d80000,0x0000000100000000)
+ ParOldGen       total 699392K, used 280497K [0x00000000c0000000, 0x00000000eab00000, 0x00000000eab00000)
+  object space 699392K, 40% used [0x00000000c0000000,0x00000000d11ec718,0x00000000eab00000)
+ Metaspace       used 152182K, capacity 155617K, committed 155776K, reserved 1177600K
+  class space    used 26885K, capacity 27705K, committed 27776K, reserved 1048576K
+}
+Event: 59810.522 GC heap before
+{Heap before GC invocations=44 (full 2):
+ PSYoungGen      total 242688K, used 154636K [0x00000000eab00000, 0x0000000100000000, 0x0000000100000000)
+  eden space 137728K, 100% used [0x00000000eab00000,0x00000000f3180000,0x00000000f3180000)
+  from space 104960K, 16% used [0x00000000f3180000,0x00000000f4203200,0x00000000f9800000)
+  to   space 100864K, 0% used [0x00000000f9d80000,0x00000000f9d80000,0x0000000100000000)
+ ParOldGen       total 699392K, used 280497K [0x00000000c0000000, 0x00000000eab00000, 0x00000000eab00000)
+  object space 699392K, 40% used [0x00000000c0000000,0x00000000d11ec718,0x00000000eab00000)
+ Metaspace       used 152618K, capacity 156065K, committed 156288K, reserved 1177600K
+  class space    used 26966K, capacity 27769K, committed 27776K, reserved 1048576K
+Event: 59810.554 GC heap after
+Heap after GC invocations=44 (full 2):
+ PSYoungGen      total 250880K, used 6160K [0x00000000eab00000, 0x0000000100000000, 0x0000000100000000)
+  eden space 150016K, 0% used [0x00000000eab00000,0x00000000eab00000,0x00000000f3d80000)
+  from space 100864K, 6% used [0x00000000f9d80000,0x00000000fa384268,0x0000000100000000)
+  to   space 98304K, 0% used [0x00000000f3d80000,0x00000000f3d80000,0x00000000f9d80000)
+ ParOldGen       total 699392K, used 286371K [0x00000000c0000000, 0x00000000eab00000, 0x00000000eab00000)
+  object space 699392K, 40% used [0x00000000c0000000,0x00000000d17a8fb0,0x00000000eab00000)
+ Metaspace       used 152618K, capacity 156065K, committed 156288K, reserved 1177600K
+  class space    used 26966K, capacity 27769K, committed 27776K, reserved 1048576K
+}
+Event: 59907.063 GC heap before
+{Heap before GC invocations=45 (full 2):
+ PSYoungGen      total 250880K, used 156176K [0x00000000eab00000, 0x0000000100000000, 0x0000000100000000)
+  eden space 150016K, 100% used [0x00000000eab00000,0x00000000f3d80000,0x00000000f3d80000)
+  from space 100864K, 6% used [0x00000000f9d80000,0x00000000fa384268,0x0000000100000000)
+  to   space 98304K, 0% used [0x00000000f3d80000,0x00000000f3d80000,0x00000000f9d80000)
+ ParOldGen       total 699392K, used 286371K [0x00000000c0000000, 0x00000000eab00000, 0x00000000eab00000)
+  object space 699392K, 40% used [0x00000000c0000000,0x00000000d17a8fb0,0x00000000eab00000)
+ Metaspace       used 152962K, capacity 156409K, committed 156672K, reserved 1177600K
+  class space    used 27005K, capacity 27814K, committed 27904K, reserved 1048576K
+Event: 59907.081 GC heap after
+Heap after GC invocations=45 (full 2):
+ PSYoungGen      total 248320K, used 7692K [0x00000000eab00000, 0x0000000100000000, 0x0000000100000000)
+  eden space 150016K, 0% used [0x00000000eab00000,0x00000000eab00000,0x00000000f3d80000)
+  from space 98304K, 7% used [0x00000000f3d80000,0x00000000f45031f0,0x00000000f9d80000)
+  to   space 95232K, 0% used [0x00000000fa300000,0x00000000fa300000,0x0000000100000000)
+ ParOldGen       total 699392K, used 287645K [0x00000000c0000000, 0x00000000eab00000, 0x00000000eab00000)
+  object space 699392K, 41% used [0x00000000c0000000,0x00000000d18e7768,0x00000000eab00000)
+ Metaspace       used 152962K, capacity 156409K, committed 156672K, reserved 1177600K
+  class space    used 27005K, capacity 27814K, committed 27904K, reserved 1048576K
+}
+Event: 60116.611 GC heap before
+{Heap before GC invocations=46 (full 2):
+ PSYoungGen      total 248320K, used 157708K [0x00000000eab00000, 0x0000000100000000, 0x0000000100000000)
+  eden space 150016K, 100% used [0x00000000eab00000,0x00000000f3d80000,0x00000000f3d80000)
+  from space 98304K, 7% used [0x00000000f3d80000,0x00000000f45031f0,0x00000000f9d80000)
+  to   space 95232K, 0% used [0x00000000fa300000,0x00000000fa300000,0x0000000100000000)
+ ParOldGen       total 699392K, used 287645K [0x00000000c0000000, 0x00000000eab00000, 0x00000000eab00000)
+  object space 699392K, 41% used [0x00000000c0000000,0x00000000d18e7768,0x00000000eab00000)
+ Metaspace       used 153274K, capacity 156883K, committed 157056K, reserved 1177600K
+  class space    used 27120K, capacity 27948K, committed 28032K, reserved 1048576K
+
+Deoptimization events (10 events):
+Event: 59642.706 Thread 0x00007f4964073000 Uncommon trap: reason=speculate_class_check action=maybe_recompile pc=0x00007f49df3c46b4 method=scala.reflect.internal.Symbols$Symbol.baseTypeSeqLength$1(Lscala/reflect/internal/Symbols$Symbol;)I @ 29
+Event: 59642.706 Thread 0x00007f4964073000 Uncommon trap: reason=speculate_class_check action=maybe_recompile pc=0x00007f49df3c46b4 method=scala.reflect.internal.Symbols$Symbol.baseTypeSeqLength$1(Lscala/reflect/internal/Symbols$Symbol;)I @ 29
+Event: 59642.757 Thread 0x00007f4964073000 Uncommon trap: reason=speculate_class_check action=maybe_recompile pc=0x00007f49e0e59fc8 method=scala.reflect.internal.Symbols$Symbol.tpe()Lscala/reflect/internal/Types$Type; @ 1
+Event: 59642.797 Thread 0x00007f4964073000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f49e1685330 method=scala.reflect.internal.tpe.TypeComparers$class.firstTry$1(Lscala/reflect/internal/SymbolTable;Lscala/reflect/internal/Types$Type;Lscala/reflect/internal/Types$Type;I)Z @
+Event: 59642.819 Thread 0x00007f4964073000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f49e1cc390c method=scala.tools.nsc.transform.LazyVals$LazyValues.transform(Lscala/reflect/internal/Trees$Tree;)Lscala/reflect/internal/Trees$Tree; @ 65
+Event: 59642.826 Thread 0x00007f4964073000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f49ddc5cf34 method=scala.reflect.internal.Scopes$Scope.unlink(Lscala/reflect/internal/Scopes$ScopeEntry;)V @ 84
+Event: 59642.830 Thread 0x00007f4964073000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f49e0fe9be8 method=scala.tools.nsc.transform.Flatten$Flattener.transform(Lscala/reflect/internal/Trees$Tree;)Lscala/reflect/internal/Trees$Tree; @ 118
+Event: 59642.961 Thread 0x00007f4964073000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f49dfc4c2ec method=scala.collection.mutable.AnyRefMap.getOrElseUpdate(Ljava/lang/Object;Lscala/Function0;)Ljava/lang/Object; @ 28
+Event: 59642.963 Thread 0x00007f4964073000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f49df0427b8 method=scala.reflect.internal.Symbols$Symbol.flatOwnerInfo()Lscala/reflect/internal/Types$Type; @ 8
+Event: 59810.399 Thread 0x00007f4974262000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f49e0fe0620 method=scala.tools.nsc.transform.Flatten$Flattener.transform(Lscala/reflect/internal/Trees$Tree;)Lscala/reflect/internal/Trees$Tree; @ 118
+
+Internal exceptions (10 events):
+Event: 59907.170 Thread 0x00007f497402d000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000ed5c62e0) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u74/6087/hotspot/src/share/vm/runtime/sharedRuntime.cpp, line 605]
+Event: 59907.170 Thread 0x00007f497402d000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000ed5cc198) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u74/6087/hotspot/src/share/vm/runtime/sharedRuntime.cpp, line 605]
+Event: 59907.170 Thread 0x00007f497402d000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000ed5d1550) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u74/6087/hotspot/src/share/vm/runtime/sharedRuntime.cpp, line 605]
+Event: 59907.170 Thread 0x00007f497402d000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000ed5d5f50) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u74/6087/hotspot/src/share/vm/runtime/sharedRuntime.cpp, line 605]
+Event: 59907.170 Thread 0x00007f497402d000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000ed5da778) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u74/6087/hotspot/src/share/vm/runtime/sharedRuntime.cpp, line 605]
+Event: 59907.170 Thread 0x00007f497402d000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000ed5defa0) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u74/6087/hotspot/src/share/vm/runtime/sharedRuntime.cpp, line 605]
+Event: 59907.170 Thread 0x00007f497402d000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000ed5e2c38) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u74/6087/hotspot/src/share/vm/runtime/sharedRuntime.cpp, line 605]
+Event: 59907.170 Thread 0x00007f497402d000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000ed5e69d8) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u74/6087/hotspot/src/share/vm/runtime/sharedRuntime.cpp, line 605]
+Event: 59907.170 Thread 0x00007f497402d000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000ed5eeb30) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u74/6087/hotspot/src/share/vm/runtime/sharedRuntime.cpp, line 605]
+Event: 59907.170 Thread 0x00007f497402d000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000ed5f6af0) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u74/6087/hotspot/src/share/vm/runtime/sharedRuntime.cpp, line 605]
+
+Events (10 events):
+Event: 60116.496 loading class xsbt/CachedCompiler0$Compiler$apiExtractor$$anonfun$5 done
+Event: 60116.496 loading class xsbt/API
+Event: 60116.496 loading class xsbt/API done
+Event: 60116.499 loading class xsbt/GlobalCompat$RunCompat$class
+Event: 60116.499 loading class xsbt/GlobalCompat$RunCompat$class done
+Event: 60116.499 loading class xsbt/CachedCompiler0$$anonfun$3
+Event: 60116.499 loading class xsbt/CachedCompiler0$$anonfun$3 done
+Event: 60116.500 loading class xsbt/CachedCompiler0$$anonfun$4
+Event: 60116.500 loading class xsbt/CachedCompiler0$$anonfun$4 done
+Event: 60116.610 Executing VM operation: ParallelGCFailedAllocation
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 08:01 7609642                            /usr/lib/jvm/java-8-oracle/jre/bin/java
+00600000-00601000 rw-p 00000000 08:01 7609642                            /usr/lib/jvm/java-8-oracle/jre/bin/java
+015be000-015df000 rw-p 00000000 00:00 0                                  [heap]
+c0000000-101b60000 rw-p 00000000 00:00 0 
+101b60000-140000000 ---p 00000000 00:00 0 
+7f48aac00000-7f48aae00000 rw-p 00000000 00:00 0 
+7f48aae00000-7f48ab000000 rw-p 00000000 00:00 0 
+7f48ab000000-7f48ab200000 rw-p 00000000 00:00 0 
+7f48ab200000-7f48ab400000 rw-p 00000000 00:00 0 
+7f48ab400000-7f48ab600000 rw-p 00000000 00:00 0 
+7f48ab600000-7f48ab800000 rw-p 00000000 00:00 0 
+7f48ab800000-7f48aba00000 rw-p 00000000 00:00 0 
+7f48aba00000-7f48abc00000 rw-p 00000000 00:00 0 
+7f48abc00000-7f48abe00000 rw-p 00000000 00:00 0 
+7f48abe00000-7f48ac000000 rw-p 00000000 00:00 0 
+7f48ac000000-7f48ac281000 rw-p 00000000 00:00 0 
+7f48ac281000-7f48b0000000 ---p 00000000 00:00 0 
+7f48b0000000-7f48b036d000 rw-p 00000000 00:00 0 
+7f48b036d000-7f48b4000000 ---p 00000000 00:00 0 
+7f48b4000000-7f48b4239000 rw-p 00000000 00:00 0 
+7f48b4239000-7f48b8000000 ---p 00000000 00:00 0 
+7f48b8000000-7f48b8403000 rw-p 00000000 00:00 0 
+7f48b8403000-7f48bc000000 ---p 00000000 00:00 0 
+7f48bc000000-7f48bc021000 rw-p 00000000 00:00 0 
+7f48bc021000-7f48c0000000 ---p 00000000 00:00 0 
+7f48c0000000-7f48c0498000 rw-p 00000000 00:00 0 
+7f48c0498000-7f48c4000000 ---p 00000000 00:00 0 
+7f48c4000000-7f48c4e46000 rw-p 00000000 00:00 0 
+7f48c4e46000-7f48c8000000 ---p 00000000 00:00 0 
+7f48c8000000-7f48c84de000 rw-p 00000000 00:00 0 
+7f48c84de000-7f48cc000000 ---p 00000000 00:00 0 
+7f48cc000000-7f48cc523000 rw-p 00000000 00:00 0 
+7f48cc523000-7f48d0000000 ---p 00000000 00:00 0 
+7f48d0000000-7f48d0040000 rw-p 00000000 00:00 0 
+7f48d0040000-7f48d4000000 ---p 00000000 00:00 0 
+7f48d4000000-7f48d4021000 rw-p 00000000 00:00 0 
+7f48d4021000-7f48d8000000 ---p 00000000 00:00 0 
+7f48d8000000-7f48d802d000 rw-p 00000000 00:00 0 
+7f48d802d000-7f48dc000000 ---p 00000000 00:00 0 
+7f48dc000000-7f48dc12b000 rw-p 00000000 00:00 0 
+7f48dc12b000-7f48e0000000 ---p 00000000 00:00 0 
+7f48e0000000-7f48e0021000 rw-p 00000000 00:00 0 
+7f48e0021000-7f48e4000000 ---p 00000000 00:00 0 
+7f48e4000000-7f48e4021000 rw-p 00000000 00:00 0 
+7f48e4021000-7f48e8000000 ---p 00000000 00:00 0 
+7f48e8000000-7f48e8021000 rw-p 00000000 00:00 0 
+7f48e8021000-7f48ec000000 ---p 00000000 00:00 0 
+7f48ec000000-7f48ec021000 rw-p 00000000 00:00 0 
+7f48ec021000-7f48f0000000 ---p 00000000 00:00 0 
+7f48f0000000-7f48f0021000 rw-p 00000000 00:00 0 
+7f48f0021000-7f48f4000000 ---p 00000000 00:00 0 
+7f48f4000000-7f48f4021000 rw-p 00000000 00:00 0 
+7f48f4021000-7f48f8000000 ---p 00000000 00:00 0 
+7f48f8000000-7f48f8021000 rw-p 00000000 00:00 0 
+7f48f8021000-7f48fc000000 ---p 00000000 00:00 0 
+7f48fc000000-7f48fc021000 rw-p 00000000 00:00 0 
+7f48fc021000-7f4900000000 ---p 00000000 00:00 0 
+7f4900000000-7f4900021000 rw-p 00000000 00:00 0 
+7f4900021000-7f4904000000 ---p 00000000 00:00 0 
+7f4904000000-7f4904021000 rw-p 00000000 00:00 0 
+7f4904021000-7f4908000000 ---p 00000000 00:00 0 
+7f4908000000-7f4908021000 rw-p 00000000 00:00 0 
+7f4908021000-7f490c000000 ---p 00000000 00:00 0 
+7f490c000000-7f490c021000 rw-p 00000000 00:00 0 
+7f490c021000-7f4910000000 ---p 00000000 00:00 0 
+7f4910000000-7f4910021000 rw-p 00000000 00:00 0 
+7f4910021000-7f4914000000 ---p 00000000 00:00 0 
+7f4914000000-7f4914021000 rw-p 00000000 00:00 0 
+7f4914021000-7f4918000000 ---p 00000000 00:00 0 
+7f4918000000-7f4918021000 rw-p 00000000 00:00 0 
+7f4918021000-7f491c000000 ---p 00000000 00:00 0 
+7f491c000000-7f491c021000 rw-p 00000000 00:00 0 
+7f491c021000-7f4920000000 ---p 00000000 00:00 0 
+7f4920000000-7f4920092000 rw-p 00000000 00:00 0 
+7f4920092000-7f4924000000 ---p 00000000 00:00 0 
+7f4924000000-7f4924021000 rw-p 00000000 00:00 0 
+7f4924021000-7f4928000000 ---p 00000000 00:00 0 
+7f4928000000-7f4928021000 rw-p 00000000 00:00 0 
+7f4928021000-7f492c000000 ---p 00000000 00:00 0 
+7f492c000000-7f492c021000 rw-p 00000000 00:00 0 
+7f492c021000-7f4930000000 ---p 00000000 00:00 0 
+7f4930000000-7f4930021000 rw-p 00000000 00:00 0 
+7f4930021000-7f4934000000 ---p 00000000 00:00 0 
+7f4934000000-7f4934492000 rw-p 00000000 00:00 0 
+7f4934492000-7f4938000000 ---p 00000000 00:00 0 
+7f4938000000-7f4938098000 rw-p 00000000 00:00 0 
+7f4938098000-7f493c000000 ---p 00000000 00:00 0 
+7f493c000000-7f493c14a000 rw-p 00000000 00:00 0 
+7f493c14a000-7f4940000000 ---p 00000000 00:00 0 
+7f4940000000-7f4940021000 rw-p 00000000 00:00 0 
+7f4940021000-7f4944000000 ---p 00000000 00:00 0 
+7f4944000000-7f4944294000 rw-p 00000000 00:00 0 
+7f4944294000-7f4948000000 ---p 00000000 00:00 0 
+7f4948000000-7f4948021000 rw-p 00000000 00:00 0 
+7f4948021000-7f494c000000 ---p 00000000 00:00 0 
+7f494c000000-7f494c729000 rw-p 00000000 00:00 0 
+7f494c729000-7f4950000000 ---p 00000000 00:00 0 
+7f4950000000-7f495006b000 rw-p 00000000 00:00 0 
+7f495006b000-7f4954000000 ---p 00000000 00:00 0 
+7f4954000000-7f49541b9000 rw-p 00000000 00:00 0 
+7f49541b9000-7f4958000000 ---p 00000000 00:00 0 
+7f4958000000-7f4958791000 rw-p 00000000 00:00 0 
+7f4958791000-7f495c000000 ---p 00000000 00:00 0 
+7f495c000000-7f495c021000 rw-p 00000000 00:00 0 
+7f495c021000-7f4960000000 ---p 00000000 00:00 0 
+7f4960000000-7f4960bb2000 rw-p 00000000 00:00 0 
+7f4960bb2000-7f4964000000 ---p 00000000 00:00 0 
+7f4964000000-7f496449c000 rw-p 00000000 00:00 0 
+7f496449c000-7f4968000000 ---p 00000000 00:00 0 
+7f4968000000-7f49682d5000 rw-p 00000000 00:00 0 
+7f49682d5000-7f496c000000 ---p 00000000 00:00 0 
+7f496c000000-7f496c43d000 rw-p 00000000 00:00 0 
+7f496c43d000-7f4970000000 ---p 00000000 00:00 0 
+7f4970000000-7f4970060000 rw-p 00000000 00:00 0 
+7f4970060000-7f4974000000 ---p 00000000 00:00 0 
+7f4974000000-7f4974265000 rw-p 00000000 00:00 0 
+7f4974265000-7f4978000000 ---p 00000000 00:00 0 
+7f4978000000-7f4978271000 rw-p 00000000 00:00 0 
+7f4978271000-7f497c000000 ---p 00000000 00:00 0 
+7f497c000000-7f497c021000 rw-p 00000000 00:00 0 
+7f497c021000-7f4980000000 ---p 00000000 00:00 0 
+7f4980000000-7f4980021000 rw-p 00000000 00:00 0 
+7f4980021000-7f4984000000 ---p 00000000 00:00 0 
+7f4984000000-7f4985b62000 rw-p 00000000 00:00 0 
+7f4985b62000-7f4988000000 ---p 00000000 00:00 0 
+7f4988000000-7f4989528000 rw-p 00000000 00:00 0 
+7f4989528000-7f498c000000 ---p 00000000 00:00 0 
+7f498c000000-7f498dce1000 rw-p 00000000 00:00 0 
+7f498dce1000-7f4990000000 ---p 00000000 00:00 0 
+7f4990000000-7f49920f0000 rw-p 00000000 00:00 0 
+7f49920f0000-7f4994000000 ---p 00000000 00:00 0 
+7f4994000000-7f4994021000 rw-p 00000000 00:00 0 
+7f4994021000-7f4998000000 ---p 00000000 00:00 0 
+7f4998000000-7f4998021000 rw-p 00000000 00:00 0 
+7f4998021000-7f499c000000 ---p 00000000 00:00 0 
+7f499c000000-7f499c243000 rw-p 00000000 00:00 0 
+7f499c243000-7f49a0000000 ---p 00000000 00:00 0 
+7f49a0000000-7f49a0021000 rw-p 00000000 00:00 0 
+7f49a0021000-7f49a4000000 ---p 00000000 00:00 0 
+7f49a4000000-7f49a4021000 rw-p 00000000 00:00 0 
+7f49a4021000-7f49a8000000 ---p 00000000 00:00 0 
+7f49a8000000-7f49a8021000 rw-p 00000000 00:00 0 
+7f49a8021000-7f49ac000000 ---p 00000000 00:00 0 
+7f49ac000000-7f49ac021000 rw-p 00000000 00:00 0 
+7f49ac021000-7f49b0000000 ---p 00000000 00:00 0 
+7f49b0000000-7f49b0023000 rw-p 00000000 00:00 0 
+7f49b0023000-7f49b4000000 ---p 00000000 00:00 0 
+7f49b4000000-7f49b4026000 rw-p 00000000 00:00 0 
+7f49b4026000-7f49b8000000 ---p 00000000 00:00 0 
+7f49b80e7000-7f49b80ea000 ---p 00000000 00:00 0 
+7f49b80ea000-7f49b83e8000 rw-p 00000000 00:00 0 
+7f49b83e8000-7f49b85e8000 rw-p 00000000 00:00 0 
+7f49b85e8000-7f49b87e8000 rw-p 00000000 00:00 0 
+7f49b87e8000-7f49b89e8000 rw-p 00000000 00:00 0 
+7f49b89e8000-7f49b8be8000 rw-p 00000000 00:00 0 
+7f49b8be8000-7f49b8de8000 rw-p 00000000 00:00 0 
+7f49b8de8000-7f49b8deb000 ---p 00000000 00:00 0 
+7f49b8deb000-7f49b8ee9000 rw-p 00000000 00:00 0                          [stack:31153]
+7f49b8ee9000-7f49b8eec000 ---p 00000000 00:00 0 
+7f49b8eec000-7f49b8fea000 rw-p 00000000 00:00 0 
+7f49b8fea000-7f49b8fed000 ---p 00000000 00:00 0 
+7f49b8fed000-7f49b90eb000 rw-p 00000000 00:00 0                          [stack:9775]
+7f49b90eb000-7f49b90ee000 ---p 00000000 00:00 0 
+7f49b90ee000-7f49b93ec000 rw-p 00000000 00:00 0                          [stack:9773]
+7f49b93ec000-7f49b95ec000 rw-p 00000000 00:00 0 
+7f49b95ec000-7f49b97ec000 rw-p 00000000 00:00 0 
+7f49b97ec000-7f49b99ec000 rw-p 00000000 00:00 0 
+7f49b99ec000-7f49b9bec000 rw-p 00000000 00:00 0 
+7f49b9bec000-7f49b9dec000 rw-p 00000000 00:00 0 
+7f49b9dec000-7f49b9fec000 rw-p 00000000 00:00 0 
+7f49b9fec000-7f49ba1ec000 rw-p 00000000 00:00 0 
+7f49ba1ec000-7f49ba3ec000 rw-p 00000000 00:00 0 
+7f49ba3ec000-7f49ba5ec000 rw-p 00000000 00:00 0 
+7f49ba5ec000-7f49ba7ec000 rw-p 00000000 00:00 0 
+7f49ba7ec000-7f49ba882000 r--s 01102000 08:01 7090296                    /usr/lib/jvm/java-8-oracle/jre/lib/ext/jfxrt.jar
+7f49ba882000-7f49baa82000 rw-p 00000000 00:00 0 
+7f49baa82000-7f49bac82000 rw-p 00000000 00:00 0 
+7f49bac82000-7f49bae82000 rw-p 00000000 00:00 0 
+7f49bae82000-7f49bb082000 rw-p 00000000 00:00 0 
+7f49bb082000-7f49bb282000 rw-p 00000000 00:00 0 
+7f49bb282000-7f49bb37d000 r--s 00c99000 08:01 9045458                    /home/dnwiebe/.ivy2/cache/org.scala-lang/scala-compiler/jars/scala-compiler-2.11.6.jar
+7f49bb37d000-7f49bb3f6000 r--s 010e3000 08:01 3420025                    /usr/lib/jvm/java-8-oracle/lib/tools.jar
+7f49bb3f6000-7f49bb5f6000 rw-p 00000000 00:00 0 
+7f49bb5f6000-7f49bb5f9000 ---p 00000000 00:00 0 
+7f49bb5f9000-7f49bb6f7000 rw-p 00000000 00:00 0                          [stack:9772]
+7f49bb6f7000-7f49bb6fa000 ---p 00000000 00:00 0 
+7f49bb6fa000-7f49bb7f8000 rw-p 00000000 00:00 0                          [stack:9776]
+7f49bb7f8000-7f49bb7fb000 ---p 00000000 00:00 0 
+7f49bb7fb000-7f49bb8f9000 rw-p 00000000 00:00 0                          [stack:30273]
+7f49bb8f9000-7f49bb8fc000 ---p 00000000 00:00 0 
+7f49bb8fc000-7f49bb9fa000 rw-p 00000000 00:00 0                          [stack:9205]
+7f49bb9fa000-7f49bb9fd000 ---p 00000000 00:00 0 
+7f49bb9fd000-7f49bbafb000 rw-p 00000000 00:00 0                          [stack:9207]
+7f49bbafb000-7f49bbafe000 ---p 00000000 00:00 0 
+7f49bbafe000-7f49bbbfc000 rw-p 00000000 00:00 0                          [stack:9770]
+7f49bbbfc000-7f49bbbff000 ---p 00000000 00:00 0 
+7f49bbbff000-7f49bbcfd000 rw-p 00000000 00:00 0                          [stack:18500]
+7f49bbcfd000-7f49bbd00000 ---p 00000000 00:00 0 
+7f49bbd00000-7f49bbdfe000 rw-p 00000000 00:00 0                          [stack:18499]
+7f49bbdfe000-7f49bbe01000 ---p 00000000 00:00 0 
+7f49bbe01000-7f49bbeff000 rw-p 00000000 00:00 0                          [stack:18498]
+7f49bbeff000-7f49bbf02000 ---p 00000000 00:00 0 
+7f49bbf02000-7f49bc000000 rw-p 00000000 00:00 0                          [stack:18497]
+7f49bc000000-7f49bc2a1000 rw-p 00000000 00:00 0 
+7f49bc2a1000-7f49c0000000 ---p 00000000 00:00 0 
+7f49c0000000-7f49c0021000 rw-p 00000000 00:00 0 
+7f49c0021000-7f49c4000000 ---p 00000000 00:00 0 
+7f49c4013000-7f49c4016000 ---p 00000000 00:00 0 
+7f49c4016000-7f49c4114000 rw-p 00000000 00:00 0                          [stack:18496]
+7f49c4114000-7f49c4117000 ---p 00000000 00:00 0 
+7f49c4117000-7f49c4215000 rw-p 00000000 00:00 0                          [stack:18495]
+7f49c4215000-7f49c4218000 ---p 00000000 00:00 0 
+7f49c4218000-7f49c4316000 rw-p 00000000 00:00 0                          [stack:18494]
+7f49c4316000-7f49c4319000 ---p 00000000 00:00 0 
+7f49c4319000-7f49c4417000 rw-p 00000000 00:00 0                          [stack:18493]
+7f49c4417000-7f49c441a000 ---p 00000000 00:00 0 
+7f49c441a000-7f49c4518000 rw-p 00000000 00:00 0                          [stack:18492]
+7f49c4518000-7f49c451b000 ---p 00000000 00:00 0 
+7f49c451b000-7f49c4619000 rw-p 00000000 00:00 0                          [stack:18491]
+7f49c4619000-7f49c461c000 ---p 00000000 00:00 0 
+7f49c461c000-7f49c471a000 rw-p 00000000 00:00 0                          [stack:18490]
+7f49c471a000-7f49c471d000 ---p 00000000 00:00 0 
+7f49c471d000-7f49c481b000 rw-p 00000000 00:00 0                          [stack:18489]
+7f49c481b000-7f49c481e000 ---p 00000000 00:00 0 
+7f49c481e000-7f49c491c000 rw-p 00000000 00:00 0                          [stack:18488]
+7f49c491c000-7f49c491f000 ---p 00000000 00:00 0 
+7f49c491f000-7f49c4a1d000 rw-p 00000000 00:00 0                          [stack:18487]
+7f49c4a1d000-7f49c4a20000 ---p 00000000 00:00 0 
+7f49c4a20000-7f49c4b1e000 rw-p 00000000 00:00 0                          [stack:18486]
+7f49c4b1e000-7f49c4b21000 ---p 00000000 00:00 0 
+7f49c4b21000-7f49c4c1f000 rw-p 00000000 00:00 0                          [stack:18485]
+7f49c4c1f000-7f49c4c22000 ---p 00000000 00:00 0 
+7f49c4c22000-7f49c4d20000 rw-p 00000000 00:00 0                          [stack:18484]
+7f49c4d20000-7f49c4d23000 ---p 00000000 00:00 0 
+7f49c4d23000-7f49c4e21000 rw-p 00000000 00:00 0                          [stack:18483]
+7f49c4e21000-7f49c4e24000 ---p 00000000 00:00 0 
+7f49c4e24000-7f49c4f22000 rw-p 00000000 00:00 0                          [stack:18482]
+7f49c4f22000-7f49c4f25000 ---p 00000000 00:00 0 
+7f49c4f25000-7f49c5023000 rw-p 00000000 00:00 0                          [stack:18481]
+7f49c5023000-7f49c5026000 ---p 00000000 00:00 0 
+7f49c5026000-7f49c5124000 rw-p 00000000 00:00 0                          [stack:18480]
+7f49c5124000-7f49c5127000 ---p 00000000 00:00 0 
+7f49c5127000-7f49c5225000 rw-p 00000000 00:00 0                          [stack:18479]
+7f49c5225000-7f49c5228000 ---p 00000000 00:00 0 
+7f49c5228000-7f49c5326000 rw-p 00000000 00:00 0                          [stack:18478]
+7f49c5326000-7f49c5329000 ---p 00000000 00:00 0 
+7f49c5329000-7f49c5427000 rw-p 00000000 00:00 0                          [stack:18477]
+7f49c5427000-7f49c542a000 ---p 00000000 00:00 0 
+7f49c542a000-7f49c5728000 rw-p 00000000 00:00 0                          [stack:18476]
+7f49c5728000-7f49c572b000 ---p 00000000 00:00 0 
+7f49c572b000-7f49c5829000 rw-p 00000000 00:00 0 
+7f49c5829000-7f49c582c000 ---p 00000000 00:00 0 
+7f49c582c000-7f49c592a000 rw-p 00000000 00:00 0                          [stack:18474]
+7f49c592a000-7f49c592d000 ---p 00000000 00:00 0 
+7f49c592d000-7f49c5a2b000 rw-p 00000000 00:00 0 
+7f49c5a2b000-7f49c5a2e000 ---p 00000000 00:00 0 
+7f49c5a2e000-7f49c5d2c000 rw-p 00000000 00:00 0                          [stack:18472]
+7f49c5d2c000-7f49c5f2c000 rw-p 00000000 00:00 0 
+7f49c5f2c000-7f49c612c000 rw-p 00000000 00:00 0 
+7f49c612c000-7f49c6130000 r--s 00026000 08:01 3670081                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/play-doc_2.11/jars/play-doc_2.11-1.2.2.jar
+7f49c6130000-7f49c615b000 r--s 001f5000 08:01 3539956                    /home/dnwiebe/.ivy2/cache/com.google.guava/guava/bundles/guava-16.0.1.jar
+7f49c615b000-7f49c61a1000 r--s 0080f000 08:01 3670080                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/play-docs_2.11/jars/play-docs_2.11-2.4.6.jar
+7f49c61a1000-7f49c61a3000 r--s 0000d000 08:01 3022846                    /home/dnwiebe/.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.1.1.jar
+7f49c61a3000-7f49c61ab000 r--s 00040000 08:01 3017615                    /home/dnwiebe/.ivy2/cache/org.apache.httpcomponents/httpclient/jars/httpclient-4.0.1.jar
+7f49c61ab000-7f49c61b0000 r--s 00026000 08:01 3017614                    /home/dnwiebe/.ivy2/cache/org.apache.httpcomponents/httpcore/jars/httpcore-4.0.1.jar
+7f49c61b0000-7f49c61b1000 r--s 00001000 08:01 3539962                    /home/dnwiebe/.ivy2/cache/oauth.signpost/signpost-commonshttp4/jars/signpost-commonshttp4-1.2.1.2.jar
+7f49c61b1000-7f49c61b4000 r--s 00009000 08:01 3539960                    /home/dnwiebe/.ivy2/cache/oauth.signpost/signpost-core/jars/signpost-core-1.2.1.2.jar
+7f49c61b4000-7f49c61be000 r--s 0007d000 08:01 3561153                    /home/dnwiebe/.ivy2/cache/com.ning/async-http-client/jars/async-http-client-1.9.21.jar
+7f49c61be000-7f49c61c9000 r--s 00086000 08:01 3156765                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/play-ws_2.11/jars/play-ws_2.11-2.4.6.jar
+7f49c61c9000-7f49c61e4000 r--s 0012e000 08:01 3670078                    /home/dnwiebe/.ivy2/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.6.11.jar
+7f49c61e4000-7f49c61e7000 r--s 00010000 08:01 3670077                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/play-cache_2.11/jars/play-cache_2.11-2.4.6.jar
+7f49c61e7000-7f49c61ec000 r--s 0002d000 08:01 4211519                    /home/dnwiebe/.ivy2/cache/tyrex/tyrex/jars/tyrex-1.0.1.jar
+7f49c61ec000-7f49c61ef000 r--s 00016000 08:01 3410923                    /home/dnwiebe/.ivy2/cache/com.zaxxer/HikariCP/bundles/HikariCP-2.3.7.jar
+7f49c61ef000-7f49c61f2000 r--s 00019000 08:01 4211517                    /home/dnwiebe/.ivy2/cache/com.jolbox/bonecp/bundles/bonecp-0.8.0.RELEASE.jar
+7f49c61f2000-7f49c61f3000 r--s 00001000 08:01 3410921                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/play-jdbc-api_2.11/jars/play-jdbc-api_2.11-2.4.6.jar
+7f49c61f3000-7f49c61f6000 r--s 00017000 08:01 3561150                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/play-jdbc_2.11/jars/play-jdbc_2.11-2.4.6.jar
+7f49c61f6000-7f49c61f7000 r--s 00001000 08:01 3156780                    /home/dnwiebe/.ivy2/cache/com.typesafe.netty/netty-http-pipelining/jars/netty-http-pipelining-1.1.4.jar
+7f49c61f7000-7f49c6210000 r--s 0012c000 08:01 3156779                    /home/dnwiebe/.ivy2/cache/io.netty/netty/bundles/netty-3.10.4.Final.jar
+7f49c6210000-7f49c6216000 r--s 0002f000 08:01 3156764                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/play-netty-server_2.11/jars/play-netty-server_2.11-2.4.6.jar
+7f49c6216000-7f49c6218000 r--s 00009000 08:01 3410917                    /home/dnwiebe/.ivy2/cache/com.google.inject.extensions/guice-assistedinject/jars/guice-assistedinject-4.0.jar
+7f49c6218000-7f49c6226000 r--s 00096000 08:01 3156776                    /home/dnwiebe/.ivy2/cache/com.google.inject/guice/jars/guice-4.0.jar
+7f49c6226000-7f49c6227000 r--s 00003000 08:01 3164605                    /home/dnwiebe/.ivy2/cache/javax.transaction/jta/jars/jta-1.1.jar
+7f49c6227000-7f49c6230000 r--s 0002d000 08:01 3539945                    /home/dnwiebe/.ivy2/cache/xml-apis/xml-apis/jars/xml-apis-1.4.01.jar
+7f49c6230000-7f49c6249000 r--s 00135000 08:01 3164603                    /home/dnwiebe/.ivy2/cache/xerces/xercesImpl/jars/xercesImpl-2.11.0.jar
+7f49c6249000-7f49c6250000 r--s 0003f000 08:01 3017613                    /home/dnwiebe/.ivy2/cache/commons-codec/commons-codec/jars/commons-codec-1.10.jar
+7f49c6250000-7f49c6251000 r--s 00003000 08:01 3561152                    /home/dnwiebe/.ivy2/cache/com.typesafe.akka/akka-slf4j_2.11/jars/akka-slf4j_2.11-2.3.13.jar
+7f49c6251000-7f49c6278000 r--s 00283000 08:01 3017611                    /home/dnwiebe/.ivy2/cache/com.typesafe.akka/akka-actor_2.11/jars/akka-actor_2.11-2.3.13.jar
+7f49c6278000-7f49c627e000 r--s 0003f000 08:01 9177963                    /home/dnwiebe/.ivy2/cache/ch.qos.logback/logback-classic/jars/logback-classic-1.1.3.jar
+7f49c627e000-7f49c6289000 r--s 00065000 08:01 9309424                    /home/dnwiebe/.ivy2/cache/ch.qos.logback/logback-core/jars/logback-core-1.1.3.jar
+7f49c6289000-7f49c6294000 r--s 0005c000 08:01 10753256                   /home/dnwiebe/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.1.jar
+7f49c6294000-7f49c6296000 r--s 00003000 08:01 4211515                    /home/dnwiebe/.ivy2/cache/org.slf4j/jcl-over-slf4j/jars/jcl-over-slf4j-1.7.12.jar
+7f49c6296000-7f49c6298000 r--s 00000000 08:01 4211514                    /home/dnwiebe/.ivy2/cache/org.slf4j/jul-to-slf4j/jars/jul-to-slf4j-1.7.12.jar
+7f49c6298000-7f49c629b000 r--s 0000c000 08:01 3156774                    /home/dnwiebe/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/bundles/jackson-datatype-jsr310-2.5.4.jar
+7f49c629b000-7f49c629d000 r--s 00003000 08:01 3156772                    /home/dnwiebe/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/bundles/jackson-datatype-jdk8-2.5.4.jar
+7f49c629d000-7f49c62af000 r--s 00106000 08:01 9047953                    /home/dnwiebe/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.5.4.jar
+7f49c62af000-7f49c62b3000 r--s 00035000 08:01 8013746                    /home/dnwiebe/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.5.4.jar
+7f49c62b3000-7f49c62ff000 r--s 003f3000 08:01 9309413                    /home/dnwiebe/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.6.jar
+7f49c62ff000-7f49c6303000 r--s 00016000 08:01 9045150                    /home/dnwiebe/.ivy2/cache/org.joda/joda-convert/jars/joda-convert-1.7.jar
+7f49c6303000-7f49c6313000 r--s 00088000 08:01 9048425                    /home/dnwiebe/.ivy2/cache/joda-time/joda-time/jars/joda-time-2.8.1.jar
+7f49c6313000-7f49c631c000 r--s 00059000 08:01 3156777                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/play-functional_2.11/jars/play-functional_2.11-2.4.6.jar
+7f49c631c000-7f49c6328000 r--s 0008c000 08:01 3156768                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/play-json_2.11/jars/play-json_2.11-2.4.6.jar
+7f49c6328000-7f49c6331000 r--s 00091000 08:01 3164601                    /home/dnwiebe/.ivy2/cache/org.scala-stm/scala-stm_2.11/jars/scala-stm_2.11-0.7.jar
+7f49c6331000-7f49c6344000 r--s 000a9000 08:01 3156767                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/play-iteratees_2.11/jars/play-iteratees_2.11-2.4.6.jar
+7f49c6344000-7f49c6394000 r--s 00350000 08:01 3156766                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/play_2.11/jars/play_2.11-2.4.6.jar
+7f49c6394000-7f49c63ed000 r--s 004f6000 08:01 9570557                    /home/dnwiebe/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.6.jar
+7f49c63ed000-7f49c6439000 r--s 00931000 08:01 3410934                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/play-omnidoc_2.11/jars/play-omnidoc_2.11-2.4.6.jar
+7f49c6439000-7f49c6639000 rw-p 00000000 00:00 0 
+7f49c6639000-7f49c6650000 r-xp 00000000 08:01 1324866                    /lib/x86_64-linux-gnu/libresolv-2.21.so
+7f49c6650000-7f49c6850000 ---p 00017000 08:01 1324866                    /lib/x86_64-linux-gnu/libresolv-2.21.so
+7f49c6850000-7f49c6851000 r--p 00017000 08:01 1324866                    /lib/x86_64-linux-gnu/libresolv-2.21.so
+7f49c6851000-7f49c6852000 rw-p 00018000 08:01 1324866                    /lib/x86_64-linux-gnu/libresolv-2.21.so
+7f49c6852000-7f49c6854000 rw-p 00000000 00:00 0 
+7f49c6854000-7f49c6859000 r-xp 00000000 08:01 1324855                    /lib/x86_64-linux-gnu/libnss_dns-2.21.so
+7f49c6859000-7f49c6a58000 ---p 00005000 08:01 1324855                    /lib/x86_64-linux-gnu/libnss_dns-2.21.so
+7f49c6a58000-7f49c6a59000 r--p 00004000 08:01 1324855                    /lib/x86_64-linux-gnu/libnss_dns-2.21.so
+7f49c6a59000-7f49c6a5a000 rw-p 00005000 08:01 1324855                    /lib/x86_64-linux-gnu/libnss_dns-2.21.so
+7f49c6a5a000-7f49c6a5c000 r-xp 00000000 08:01 1321111                    /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7f49c6a5c000-7f49c6c5b000 ---p 00002000 08:01 1321111                    /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7f49c6c5b000-7f49c6c5c000 r--p 00001000 08:01 1321111                    /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7f49c6c5c000-7f49c6c5d000 rw-p 00002000 08:01 1321111                    /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7f49c6c5d000-7f49c6e5d000 rw-p 00000000 00:00 0 
+7f49c6e5d000-7f49c6e73000 r-xp 00000000 08:01 1321049                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f49c6e73000-7f49c7072000 ---p 00016000 08:01 1321049                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f49c7072000-7f49c7073000 r--p 00015000 08:01 1321049                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f49c7073000-7f49c7074000 rw-p 00016000 08:01 1321049                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f49c7074000-7f49c7075000 r--s 00004000 08:01 3156770                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/play-netty-utils/jars/play-netty-utils-2.4.6.jar
+7f49c7075000-7f49c7077000 r--s 00008000 08:01 9047952                    /home/dnwiebe/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.5.4.jar
+7f49c7077000-7f49c7078000 r--s 00001000 08:01 3156778                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/play-datacommons_2.11/jars/play-datacommons_2.11-2.4.6.jar
+7f49c7078000-7f49c707e000 r--s 0003a000 08:01 3156762                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/play-server_2.11/jars/play-server_2.11-2.4.6.jar
+7f49c707e000-7f49c7089000 r--s 00096000 08:01 10753251                   /home/dnwiebe/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.1.jar
+7f49c7089000-7f49c708b000 r--s 0000d000 08:01 3156760                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/twirl-api_2.11/jars/twirl-api_2.11-1.1.1.jar
+7f49c708b000-7f49c7091000 r--s 0003f000 08:01 7090298                    /usr/lib/jvm/java-8-oracle/jre/lib/ext/sunjce_provider.jar
+7f49c7091000-7f49c70c3000 r-xp 00000000 08:01 7090231                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libsunec.so
+7f49c70c3000-7f49c72c2000 ---p 00032000 08:01 7090231                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libsunec.so
+7f49c72c2000-7f49c72c8000 rw-p 00031000 08:01 7090231                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libsunec.so
+7f49c72c8000-7f49c72d8000 rw-p 00000000 00:00 0 
+7f49c72d8000-7f49c72d9000 r--s 00009000 08:01 7090297                    /usr/lib/jvm/java-8-oracle/jre/lib/ext/sunec.jar
+7f49c72d9000-7f49c72dc000 r--s 0001a000 08:01 7090376                    /usr/lib/jvm/java-8-oracle/jre/lib/jce.jar
+7f49c72dc000-7f49c74dc000 rw-p 00000000 00:00 0 
+7f49c74dc000-7f49c76dc000 rw-p 00000000 00:00 0 
+7f49c76dc000-7f49c78dc000 rw-p 00000000 00:00 0 
+7f49c78dc000-7f49c78dd000 r--s 00001000 08:01 4210127                    /home/dnwiebe/.ivy2/cache/org.webjars/diff/jars/diff-1.0.7.jar
+7f49c78dd000-7f49c78df000 r--s 00000000 08:01 4210125                    /home/dnwiebe/.ivy2/cache/org.webjars/debug/jars/debug-0.7.4.jar
+7f49c78df000-7f49c78e2000 r--s 0000c000 08:01 4210123                    /home/dnwiebe/.ivy2/cache/org.webjars/mocha/jars/mocha-1.17.1.jar
+7f49c78e2000-7f49c78e7000 r--s 00026000 08:01 4204755                    /home/dnwiebe/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-mocha/jars/sbt-mocha-1.1.0.jar
+7f49c78e7000-7f49c78ea000 r--s 00011000 08:01 4204754                    /home/dnwiebe/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-digest/jars/sbt-digest-1.1.0.jar
+7f49c78ea000-7f49c78ec000 r--s 00035000 08:01 3945971                    /home/dnwiebe/.ivy2/cache/org.webjars/rjs/jars/rjs-2.1.15.jar
+7f49c78ec000-7f49c78ef000 r--s 0000f000 08:01 4199410                    /home/dnwiebe/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-rjs/jars/sbt-rjs-1.0.7.jar
+7f49c78ef000-7f49c78f1000 r--s 00000000 08:01 4210117                    /home/dnwiebe/.ivy2/cache/org.webjars/strip-json-comments/jars/strip-json-comments-1.0.2-1.jar
+7f49c78f1000-7f49c78f3000 r--s 00000000 08:01 4210121                    /home/dnwiebe/.ivy2/cache/org.webjars/console-browserify/jars/console-browserify-0.1.6-1.jar
+7f49c78f3000-7f49c78f5000 r--s 00006000 08:01 4210119                    /home/dnwiebe/.ivy2/cache/org.webjars/underscorejs/jars/underscorejs-1.5.2-2.jar
+7f49c78f5000-7f49c78f7000 r--s 00028000 08:01 3945970                    /home/dnwiebe/.ivy2/cache/org.webjars/jshint-node/jars/jshint-node-2.4.3.jar
+7f49c78f7000-7f49c78f8000 r--s 00004000 08:01 4199408                    /home/dnwiebe/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-jshint/jars/sbt-jshint-1.0.3.jar
+7f49c78f8000-7f49c78fb000 r--s 00009000 08:01 4210113                    /home/dnwiebe/.ivy2/cache/org.webjars/clean-css/jars/clean-css-2.2.7.jar
+7f49c78fb000-7f49c78fc000 r--s 00001000 08:01 4210115                    /home/dnwiebe/.ivy2/cache/org.webjars/amdefine/jars/amdefine-0.1.0-1.jar
+7f49c78fc000-7f49c78fd000 r--s 00005000 08:01 4210111                    /home/dnwiebe/.ivy2/cache/org.webjars/source-map/jars/source-map-0.1.31-2.jar
+7f49c78fd000-7f49c78ff000 r--s 00019000 08:01 3945969                    /home/dnwiebe/.ivy2/cache/org.webjars/less-node/jars/less-node-1.7.5.jar
+7f49c78ff000-7f49c7901000 r--s 00008000 08:01 4199406                    /home/dnwiebe/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-less/jars/sbt-less-1.0.6.jar
+7f49c7901000-7f49c7903000 r--s 00000000 08:01 4210109                    /home/dnwiebe/.ivy2/cache/org.webjars/mkdirp/jars/mkdirp-0.3.5.jar
+7f49c7903000-7f49c7905000 r--s 00013000 08:01 4210107                    /home/dnwiebe/.ivy2/cache/org.webjars/coffee-script-node/jars/coffee-script-node-1.7.1.jar
+7f49c7905000-7f49c7907000 r--s 00003000 08:01 4199404                    /home/dnwiebe/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-coffeescript/jars/sbt-coffeescript-1.0.0.jar
+7f49c7907000-7f49c7957000 r--s 0028c000 08:01 4210105                    /home/dnwiebe/.ivy2/cache/org.webjars/npm/jars/npm-2.11.2.jar
+7f49c7957000-7f49c7958000 r--s 00001000 08:01 4208094                    /home/dnwiebe/.ivy2/cache/com.typesafe/npm_2.10/jars/npm_2.10-1.1.1.jar
+7f49c7958000-7f49c7959000 r--s 00007000 08:01 9047939                    /home/dnwiebe/.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.12.jar
+7f49c7959000-7f49c795a000 r--s 00002000 08:01 4208104                    /home/dnwiebe/.ivy2/cache/org.slf4j/slf4j-simple/jars/slf4j-simple-1.7.12.jar
+7f49c795a000-7f49c795e000 r--s 00043000 08:01 4208102                    /home/dnwiebe/.ivy2/cache/io.spray/spray-json_2.10/bundles/spray-json_2.10-1.3.2.jar
+7f49c795e000-7f49c7962000 r--s 000ac000 08:01 4208100                    /home/dnwiebe/.ivy2/cache/io.apigee.trireme/trireme-node10src/jars/trireme-node10src-0.8.5.jar
+7f49c7962000-7f49c796f000 r--s 0010f000 08:01 2898156                    /home/dnwiebe/.ivy2/cache/io.apigee/rhino/jars/rhino-1.7R5pre4.jar
+7f49c796f000-7f49c7977000 r--s 00060000 08:01 4208098                    /home/dnwiebe/.ivy2/cache/io.apigee.trireme/trireme-core/jars/trireme-core-0.8.5.jar
+7f49c7977000-7f49c7978000 r--s 0001e000 08:01 4210101                    /home/dnwiebe/.ivy2/cache/org.fusesource.leveldbjni/leveldbjni-win64/jars/leveldbjni-win64-1.5.jar
+7f49c7978000-7f49c7979000 r--s 0001b000 08:01 4210099                    /home/dnwiebe/.ivy2/cache/org.fusesource.leveldbjni/leveldbjni-win32/jars/leveldbjni-win32-1.5.jar
+7f49c7979000-7f49c797a000 r--s 00044000 08:01 4210097                    /home/dnwiebe/.ivy2/cache/org.fusesource.leveldbjni/leveldbjni-linux64/jars/leveldbjni-linux64-1.5.jar
+7f49c797a000-7f49c797b000 r--s 00044000 08:01 4210095                    /home/dnwiebe/.ivy2/cache/org.fusesource.leveldbjni/leveldbjni-linux32/jars/leveldbjni-linux32-1.5.jar
+7f49c797b000-7f49c797c000 r--s 00028000 08:01 4208122                    /home/dnwiebe/.ivy2/cache/org.fusesource.leveldbjni/leveldbjni-osx/jars/leveldbjni-osx-1.5.jar
+7f49c797c000-7f49c797d000 r--s 00004000 08:01 4210103                    /home/dnwiebe/.ivy2/cache/org.fusesource.hawtjni/hawtjni-runtime/jars/hawtjni-runtime-1.8.jar
+7f49c797d000-7f49c797f000 r--s 0000c000 08:01 4208120                    /home/dnwiebe/.ivy2/cache/org.fusesource.leveldbjni/leveldbjni/jars/leveldbjni-1.7.jar
+7f49c797f000-7f49c7982000 r--s 000fa000 08:01 4208116                    /home/dnwiebe/.ivy2/cache/org.fusesource.leveldbjni/leveldbjni-all/bundles/leveldbjni-all-1.7.jar
+7f49c7982000-7f49c7986000 r--s 00034000 08:01 4208114                    /home/dnwiebe/.ivy2/cache/org.iq80.leveldb/leveldb/jars/leveldb-0.5.jar
+7f49c7986000-7f49c7994000 r--s 000bf000 08:01 4208110                    /home/dnwiebe/.ivy2/cache/com.typesafe.akka/akka-persistence-experimental_2.10/jars/akka-persistence-experimental_2.10-2.3.11.jar
+7f49c7994000-7f49c79a4000 r--s 000f7000 08:01 4208108                    /home/dnwiebe/.ivy2/cache/com.typesafe.akka/akka-cluster_2.10/jars/akka-cluster_2.10-2.3.11.jar
+7f49c79a4000-7f49c79ac000 r--s 0007b000 08:01 3539974                    /home/dnwiebe/.ivy2/cache/com.google.protobuf/protobuf-java/bundles/protobuf-java-2.5.0.jar
+7f49c79ac000-7f49c79c4000 r--s 00115000 08:01 3156662                    /home/dnwiebe/.ivy2/cache/io.netty/netty/bundles/netty-3.8.0.Final.jar
+7f49c79c4000-7f49c79da000 r--s 00135000 08:01 4208106                    /home/dnwiebe/.ivy2/cache/com.typesafe.akka/akka-remote_2.10/jars/akka-remote_2.10-2.3.11.jar
+7f49c79da000-7f49c7a00000 r--s 00263000 08:01 3156661                    /home/dnwiebe/.ivy2/cache/com.typesafe.akka/akka-actor_2.10/jars/akka-actor_2.10-2.3.11.jar
+7f49c7a00000-7f49c7c00000 rw-p 00000000 00:00 0 
+7f49c7c00000-7f49c7e00000 rw-p 00000000 00:00 0 
+7f49c7e00000-7f49c8000000 rw-p 00000000 00:00 0 
+7f49c8000000-7f49c8021000 rw-p 00000000 00:00 0 
+7f49c8021000-7f49cc000000 ---p 00000000 00:00 0 
+7f49cc000000-7f49cc002000 r--s 00001000 08:01 4208118                    /home/dnwiebe/.ivy2/cache/org.iq80.leveldb/leveldb-api/jars/leveldb-api-0.5.jar
+7f49cc002000-7f49cc004000 r--s 0000a000 08:01 4208112                    /home/dnwiebe/.ivy2/cache/org.uncommons.maths/uncommons-maths/jars/uncommons-maths-1.2.2a.jar
+7f49cc004000-7f49cc013000 r--s 000bf000 08:01 4208096                    /home/dnwiebe/.ivy2/cache/com.typesafe.akka/akka-contrib_2.10/jars/akka-contrib_2.10-2.3.11.jar
+7f49cc013000-7f49cc017000 r--s 00022000 08:01 3156659                    /home/dnwiebe/.ivy2/cache/com.typesafe/jse_2.10/jars/jse_2.10-1.1.2.jar
+7f49cc017000-7f49cc01b000 r--s 00020000 08:01 4205275                    /home/dnwiebe/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-js-engine/jars/sbt-js-engine-1.1.3.jar
+7f49cc01b000-7f49cc01e000 r--s 0002e000 08:01 8013738                    /home/dnwiebe/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.3.3.jar
+7f49cc01e000-7f49cc020000 r--s 00007000 08:01 9047937                    /home/dnwiebe/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.3.0.jar
+7f49cc020000-7f49cc031000 r--s 000cf000 08:01 9047936                    /home/dnwiebe/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.3.3.jar
+7f49cc031000-7f49cc038000 r--s 00056000 08:01 3016465                    /home/dnwiebe/.ivy2/cache/org.apache.commons/commons-compress/jars/commons-compress-1.9.jar
+7f49cc038000-7f49cc039000 r--s 00006000 08:01 3156657                    /home/dnwiebe/.ivy2/cache/org.webjars/webjars-locator-core/jars/webjars-locator-core-0.26.jar
+7f49cc039000-7f49cc03b000 r--s 00002000 08:01 4208092                    /home/dnwiebe/.ivy2/cache/org.webjars/webjars-locator/jars/webjars-locator-0.26.jar
+7f49cc03b000-7f49cc043000 r--s 0003e000 08:01 4205274                    /home/dnwiebe/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-web/jars/sbt-web-1.2.2.jar
+7f49cc043000-7f49cc083000 r--s 00277000 08:01 4208090                    /home/dnwiebe/.ivy2/cache/org.bouncycastle/bcprov-jdk15on/jars/bcprov-jdk15on-1.51.jar
+7f49cc083000-7f49cc08a000 r--s 00038000 08:01 4206597                    /home/dnwiebe/.ivy2/cache/org.bouncycastle/bcpg-jdk15on/jars/bcpg-jdk15on-1.51.jar
+7f49cc08a000-7f49cc08b000 r--s 00004000 08:01 4208088                    /home/dnwiebe/.ivy2/cache/org.apache.ant/ant-launcher/jars/ant-launcher-1.9.3.jar
+7f49cc08b000-7f49cc0aa000 r--s 001cc000 08:01 4206595                    /home/dnwiebe/.ivy2/cache/org.apache.ant/ant/jars/ant-1.9.3.jar
+7f49cc0aa000-7f49cc0ae000 r--s 00020000 08:01 4206613                    /home/dnwiebe/.ivy2/cache/org.eclipse.aether/aether-impl/jars/aether-impl-0.9.0.M2.jar
+7f49cc0ae000-7f49cc0b2000 r--s 0001d000 08:01 4206617                    /home/dnwiebe/.ivy2/cache/org.eclipse.aether/aether-util/jars/aether-util-0.9.0.M2.jar
+7f49cc0b2000-7f49cc0b4000 r--s 00003000 08:01 4208086                    /home/dnwiebe/.ivy2/cache/org.eclipse.aether/aether-spi/jars/aether-spi-0.9.0.M2.jar
+7f49cc0b4000-7f49cc0b8000 r--s 0001d000 08:01 4206615                    /home/dnwiebe/.ivy2/cache/org.eclipse.aether/aether-api/jars/aether-api-0.9.0.M2.jar
+7f49cc0b8000-7f49cc0ba000 r--s 0000e000 08:01 4206611                    /home/dnwiebe/.ivy2/cache/org.apache.maven/maven-aether-provider/jars/maven-aether-provider-3.2.2.jar
+7f49cc0ba000-7f49cc0bf000 r--s 00025000 08:01 4206609                    /home/dnwiebe/.ivy2/cache/org.apache.maven/maven-model-builder/jars/maven-model-builder-3.2.2.jar
+7f49cc0bf000-7f49cc0c2000 r--s 0000a000 08:01 4206625                    /home/dnwiebe/.ivy2/cache/org.codehaus.plexus/plexus-classworlds/bundles/plexus-classworlds-2.5.1.jar
+7f49cc0c2000-7f49cc0c8000 r--s 00042000 08:01 4208078                    /home/dnwiebe/.ivy2/cache/org.eclipse.sisu/org.eclipse.sisu.inject/eclipse-plugins/org.eclipse.sisu.inject-0.0.0.M5.jar
+7f49cc0c8000-7f49cc0ca000 r--s 00000000 08:01 4208084                    /home/dnwiebe/.ivy2/cache/aopalliance/aopalliance/jars/aopalliance-1.0.jar
+7f49cc0ca000-7f49cc0d2000 r--s 00050000 08:01 3561098                    /home/dnwiebe/.ivy2/cache/org.sonatype.sisu/sisu-guice/jars/sisu-guice-3.1.3-no_aop.jar
+7f49cc0d2000-7f49cc0d3000 r--s 00000000 08:01 4208082                    /home/dnwiebe/.ivy2/cache/javax.inject/javax.inject/jars/javax.inject-1.jar
+7f49cc0d3000-7f49cc0d4000 r--s 00001000 08:01 4208080                    /home/dnwiebe/.ivy2/cache/javax.annotation/jsr250-api/jars/jsr250-api-1.0.jar
+7f49cc0d4000-7f49cc0d7000 r--s 00008000 08:01 4206633                    /home/dnwiebe/.ivy2/cache/javax.enterprise/cdi-api/jars/cdi-api-1.0.jar
+7f49cc0d7000-7f49cc0dd000 r--s 0002a000 08:01 4206619                    /home/dnwiebe/.ivy2/cache/org.eclipse.sisu/org.eclipse.sisu.plexus/eclipse-plugins/org.eclipse.sisu.plexus-0.0.0.M5.jar
+7f49cc0dd000-7f49cc0df000 r--s 0000a000 08:01 4206593                    /home/dnwiebe/.ivy2/cache/org.apache.maven/maven-plugin-api/jars/maven-plugin-api-3.2.2.jar
+7f49cc0df000-7f49cc0e2000 r--s 0000b000 08:01 4206607                    /home/dnwiebe/.ivy2/cache/org.apache.maven/maven-artifact/jars/maven-artifact-3.2.2.jar
+7f49cc0e2000-7f49cc0e4000 r--s 00005000 08:01 4206605                    /home/dnwiebe/.ivy2/cache/org.apache.maven/maven-repository-metadata/jars/maven-repository-metadata-3.2.2.jar
+7f49cc0e4000-7f49cc0e6000 r--s 00002000 08:01 4206631                    /home/dnwiebe/.ivy2/cache/org.sonatype.plexus/plexus-cipher/jars/plexus-cipher-1.7.jar
+7f49cc0e6000-7f49cc0e7000 r--s 00006000 08:01 4206629                    /home/dnwiebe/.ivy2/cache/org.sonatype.plexus/plexus-sec-dispatcher/jars/plexus-sec-dispatcher-1.3.jar
+7f49cc0e7000-7f49cc0e9000 r--s 00000000 08:01 4206627                    /home/dnwiebe/.ivy2/cache/org.codehaus.plexus/plexus-component-annotations/jars/plexus-component-annotations-1.5.5.jar
+7f49cc0e9000-7f49cc0ec000 r--s 0000d000 08:01 4206621                    /home/dnwiebe/.ivy2/cache/org.codehaus.plexus/plexus-interpolation/jars/plexus-interpolation-1.19.jar
+7f49cc0ec000-7f49cc0ee000 r--s 00009000 08:01 4206603                    /home/dnwiebe/.ivy2/cache/org.apache.maven/maven-settings-builder/jars/maven-settings-builder-3.2.2.jar
+7f49cc0ee000-7f49cc0f2000 r--s 0003a000 08:01 4206623                    /home/dnwiebe/.ivy2/cache/org.codehaus.plexus/plexus-utils/jars/plexus-utils-3.0.17.jar
+7f49cc0f2000-7f49cc0f5000 r--s 00025000 08:01 4206599                    /home/dnwiebe/.ivy2/cache/org.apache.maven/maven-model/jars/maven-model-3.2.2.jar
+7f49cc0f5000-7f49cc2f5000 rw-p 00000000 00:00 0 
+7f49cc2f5000-7f49cc4f5000 rw-p 00000000 00:00 0 
+7f49cc4f5000-7f49cc4f8000 ---p 00000000 00:00 0 
+7f49cc4f8000-7f49cc5f6000 rw-p 00000000 00:00 0                          [stack:18446]
+7f49cc5f6000-7f49cc5f9000 ---p 00000000 00:00 0 
+7f49cc5f9000-7f49cc6f7000 rw-p 00000000 00:00 0                          [stack:9771]
+7f49cc6f7000-7f49cc6fa000 ---p 00000000 00:00 0 
+7f49cc6fa000-7f49cc7f8000 rw-p 00000000 00:00 0 
+7f49cc7f8000-7f49cc7fb000 ---p 00000000 00:00 0 
+7f49cc7fb000-7f49cc8f9000 rw-p 00000000 00:00 0                          [stack:18469]
+7f49cc8f9000-7f49cc8fc000 ---p 00000000 00:00 0 
+7f49cc8fc000-7f49cc9fa000 rw-p 00000000 00:00 0                          [stack:9777]
+7f49cc9fa000-7f49cc9fd000 ---p 00000000 00:00 0 
+7f49cc9fd000-7f49ccafb000 rw-p 00000000 00:00 0                          [stack:18451]
+7f49ccafb000-7f49ccafe000 ---p 00000000 00:00 0 
+7f49ccafe000-7f49ccbfc000 rw-p 00000000 00:00 0                          [stack:18470]
+7f49ccbfc000-7f49ccbff000 ---p 00000000 00:00 0 
+7f49ccbff000-7f49cccfd000 rw-p 00000000 00:00 0 
+7f49cccfd000-7f49ccd00000 ---p 00000000 00:00 0 
+7f49ccd00000-7f49ccdfe000 rw-p 00000000 00:00 0                          [stack:9774]
+7f49ccdfe000-7f49cce01000 ---p 00000000 00:00 0 
+7f49cce01000-7f49cceff000 rw-p 00000000 00:00 0                          [stack:18449]
+7f49cceff000-7f49ccf02000 ---p 00000000 00:00 0 
+7f49ccf02000-7f49cd000000 rw-p 00000000 00:00 0                          [stack:9209]
+7f49cd000000-7f49cd003000 ---p 00000000 00:00 0 
+7f49cd003000-7f49cd301000 rw-p 00000000 00:00 0 
+7f49cd301000-7f49cd501000 rw-p 00000000 00:00 0 
+7f49cd501000-7f49cd701000 rw-p 00000000 00:00 0 
+7f49cd701000-7f49cd901000 rw-p 00000000 00:00 0 
+7f49cd901000-7f49cd903000 r--s 00009000 08:01 4206601                    /home/dnwiebe/.ivy2/cache/org.apache.maven/maven-settings/jars/maven-settings-3.2.2.jar
+7f49cd903000-7f49cd90f000 r--s 00081000 08:01 4206591                    /home/dnwiebe/.ivy2/cache/org.apache.maven/maven-core/jars/maven-core-3.2.2.jar
+7f49cd90f000-7f49cd925000 r--s 0010a000 08:01 4206589                    /home/dnwiebe/.ivy2/cache/org.vafer/jdeb/jars/jdeb-1.3.jar
+7f49cd925000-7f49cd93e000 r--s 000e7000 08:01 4205273                    /home/dnwiebe/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-native-packager/jars/sbt-native-packager-1.0.1.jar
+7f49cd93e000-7f49cd946000 r--s 00041000 08:01 4206587                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/twirl-parser_2.10/jars/twirl-parser_2.10-1.1.1.jar
+7f49cd946000-7f49cd949000 r--s 00019000 08:01 4205303                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/twirl-compiler_2.10/jars/twirl-compiler_2.10-1.1.1.jar
+7f49cd949000-7f49cd94c000 r--s 00011000 08:01 4205272                    /home/dnwiebe/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-twirl/jars/sbt-twirl-1.1.1.jar
+7f49cd94c000-7f49cd94e000 r--s 000a0000 08:01 4205270                    /home/dnwiebe/.ivy2/cache/net.contentobjects.jnotify/jnotify/jars/jnotify-0.94-play-1.jar
+7f49cd94e000-7f49cd95c000 r--s 00191000 08:01 4204756                    /home/dnwiebe/.ivy2/cache/com.h2database/h2/jars/h2-1.4.187.jar
+7f49cd95c000-7f49cd987000 r--s 001fc000 08:01 3546717                    /home/dnwiebe/.ivy2/cache/com.google.guava/guava/bundles/guava-18.0.jar
+7f49cd987000-7f49cd98c000 r--s 0003f000 08:01 3016275                    /home/dnwiebe/.ivy2/cache/com.typesafe/config/bundles/config-1.3.0.jar
+7f49cd98c000-7f49cd995000 r--s 000ae000 08:01 3156631                    /home/dnwiebe/.ivy2/cache/org.javassist/javassist/bundles/javassist-3.19.0-GA.jar
+7f49cd995000-7f49cd997000 r--s 00000000 08:01 3156655                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/play-exceptions/jars/play-exceptions-2.4.6.jar
+7f49cd997000-7f49cd998000 r--s 00000000 08:01 3156654                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/build-link/jars/build-link-2.4.6.jar
+7f49cd998000-7f49cd99c000 r--s 00022000 08:01 2897734                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/sbt-run-support_2.10/jars/sbt-run-support_2.10-2.4.6.jar
+7f49cd99c000-7f49cd9a0000 r--s 0002a000 08:01 2884537                    /home/dnwiebe/.ivy2/cache/commons-io/commons-io/jars/commons-io-2.4.jar
+7f49cd9a0000-7f49cd9a7000 r--s 00064000 08:01 3156652                    /home/dnwiebe/.ivy2/cache/org.apache.commons/commons-lang3/jars/commons-lang3-3.4.jar
+7f49cd9a7000-7f49cd9a9000 r--s 0000d000 08:01 4205277                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/twirl-api_2.10/jars/twirl-api_2.10-1.1.1.jar
+7f49cd9a9000-7f49cd9b9000 r--s 00083000 08:01 2889290                    /home/dnwiebe/.ivy2/cache/com.typesafe.play/sbt-routes-compiler_2.10/jars/sbt-routes-compiler_2.10-2.4.6.jar
+7f49cd9b9000-7f49cd9c2000 r--s 00054000 08:01 4204753                    /home/dnwiebe/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.play/sbt-plugin/jars/sbt-plugin-2.4.6.jar
+7f49cd9c2000-7f49cdbc2000 rw-p 00000000 00:00 0 
+7f49cdbc2000-7f49cdbd4000 r--s 00345000 08:01 7090372                    /usr/lib/jvm/java-8-oracle/jre/lib/resources.jar
+7f49cdbd4000-7f49cddd4000 rw-p 00000000 00:00 0 
+7f49cddd4000-7f49cdfd4000 rw-p 00000000 00:00 0 
+7f49cdfd4000-7f49ce1d4000 rw-p 00000000 00:00 0 
+7f49ce1d9000-7f49ce1da000 rw-p 00000000 00:00 0 
+7f49ce1da000-7f49ce1dc000 r--s 00001000 08:01 7090294                    /usr/lib/jvm/java-8-oracle/jre/lib/ext/dnsns.jar
+7f49ce1dc000-7f49ce1f7000 r--s 001d5000 08:01 7090299                    /usr/lib/jvm/java-8-oracle/jre/lib/ext/nashorn.jar
+7f49ce1f7000-7f49ce1fb000 r--s 0003a000 08:01 7090295                    /usr/lib/jvm/java-8-oracle/jre/lib/ext/sunpkcs11.jar
+7f49ce1fb000-7f49ce1fc000 r--s 00010000 08:01 7090304                    /usr/lib/jvm/java-8-oracle/jre/lib/ext/zipfs.jar
+7f49ce1fc000-7f49ce1fd000 r--s 0000a000 08:01 7090302                    /usr/lib/jvm/java-8-oracle/jre/lib/ext/jaccess.jar
+7f49ce1fd000-7f49ce202000 r--s 00084000 08:01 7090319                    /usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar
+7f49ce202000-7f49ce208000 r--s 002f8000 08:01 7090168                    /usr/lib/jvm/java-8-oracle/jre/lib/charsets.jar
+7f49ce208000-7f49ce20d000 r--s 00035000 08:01 10100152                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/compiler-interface-bin_2.11.6__52.0/compiler-interface.jar
+7f49ce20d000-7f49ce211000 r--s 00031000 08:01 9701968                    /home/dnwiebe/.ivy2/cache/jline/jline/jars/jline-2.12.1.jar
+7f49ce211000-7f49ce21c000 r--s 0005b000 08:01 10748084                   /home/dnwiebe/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.3.jar
+7f49ce21c000-7f49ce227000 r--s 00094000 08:01 10748082                   /home/dnwiebe/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.3.jar
+7f49ce227000-7f49ce243000 r--s 00393000 08:01 7090303                    /usr/lib/jvm/java-8-oracle/jre/lib/ext/cldrdata.jar
+7f49ce243000-7f49ce24d000 r--s 00116000 08:01 7090300                    /usr/lib/jvm/java-8-oracle/jre/lib/ext/localedata.jar
+7f49ce24d000-7f49ce44d000 rw-p 00000000 00:00 0 
+7f49ce44d000-7f49ce451000 r--s 00097000 08:01 7090167                    /usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar
+7f49ce451000-7f49ce651000 rw-p 00000000 00:00 0 
+7f49ce651000-7f49ce654000 ---p 00000000 00:00 0 
+7f49ce654000-7f49ce68a000 rw-p 00000000 00:00 0 
+7f49ce68a000-7f49ce68c000 r--s 0000b000 08:01 10234084                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/xsbti/interface-0.13.8.jar
+7f49ce68c000-7f49ce68e000 r--s 00001000 08:01 10100104                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/compiler-ivy-integration-0.13.8.jar
+7f49ce68e000-7f49ce690000 r--s 00006000 08:01 10100114                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/relation-0.13.8.jar
+7f49ce690000-7f49ce696000 r--s 0003d000 08:01 10100102                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/io-0.13.8.jar
+7f49ce696000-7f49ce6cc000 r--s 002d9000 08:01 10100124                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/scala-reflect-2.10.4.jar
+7f49ce6cc000-7f49ce8cc000 rw-p 00000000 00:00 0 
+7f49ce8cc000-7f49ce8f8000 r--s 00235000 08:01 10100121                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/main-0.13.8.jar
+7f49ce8f8000-7f49ce8fb000 r--s 0001a000 08:01 10100115                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/cache-0.13.8.jar
+7f49ce8fb000-7f49ce900000 r--s 00036000 08:01 10100113                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/compile-0.13.8.jar
+7f49ce900000-7f49ce902000 r--s 0000b000 08:01 10100107                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/tracking-0.13.8.jar
+7f49ce902000-7f49ce909000 r--s 00049000 08:01 10100086                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/api-0.13.8.jar
+7f49ce909000-7f49ce90b000 r--s 00012000 08:01 10100116                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/jawn-parser_2.10-0.6.0.jar
+7f49ce90b000-7f49ce90d000 r--s 0000e000 08:01 10100098                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/logic-0.13.8.jar
+7f49ce90d000-7f49ce910000 r--s 00013000 08:01 10100103                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/classpath-0.13.8.jar
+7f49ce910000-7f49ce918000 r--s 00057000 08:01 10100111                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/completion-0.13.8.jar
+7f49ce918000-7f49ce91a000 r--s 00013000 08:01 10100094                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/json4s-ast_2.10-3.2.10.jar
+7f49ce91a000-7f49ce91c000 r--s 00001000 08:01 10100092                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/launcher-interface-0.13.8.jar
+7f49ce91c000-7f49ce920000 r--s 00022000 08:01 10100117                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/sbinary_2.10-0.4.2.jar
+7f49ce920000-7f49ce940000 r--s 001a4000 08:01 10100100                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/ivy-0.13.8.jar
+7f49ce940000-7f49ce943000 r--s 00030000 08:01 10100119                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/jline-2.11.jar
+7f49ce943000-7f49ce94d000 r--s 0006e000 08:01 10100088                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/incremental-compiler-0.13.8.jar
+7f49ce94d000-7f49ce950000 r--s 0001e000 08:01 10100090                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/run-0.13.8.jar
+7f49ce950000-7f49ce952000 r--s 00014000 08:01 10100126                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/apply-macro-0.13.8.jar
+7f49ce952000-7f49ce954000 r--s 00002000 08:01 10100085                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/control-0.13.8.jar
+7f49ce954000-7f49ce955000 r--s 00001000 08:01 10100101                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/cross-0.13.8.jar
+7f49ce955000-7f49ce95c000 r--s 0004b000 08:01 10100127                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/serialization_2.10-0.1.1.jar
+7f49ce95c000-7f49ce95d000 r--s 00005000 08:01 10100112                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/sbt-0.13.8.jar
+7f49ce95d000-7f49ce960000 r--s 00012000 08:01 10100108                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/classfile-0.13.8.jar
+7f49ce960000-7f49ce962000 r--s 00017000 08:01 10100118                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/testing-0.13.8.jar
+7f49ce962000-7f49ce965000 r--s 00018000 08:01 10100095                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/logging-0.13.8.jar
+7f49ce965000-7f49ce96e000 r--s 0006e000 08:01 10100097                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/actions-0.13.8.jar
+7f49ce96e000-7f49ce984000 r--s 00100000 08:01 10100089                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/ivy-2.3.0-sbt-fccfbd44c9f64523b61398a0155784dcbaeae28f.jar
+7f49ce984000-7f49ce988000 r--s 0001b000 08:01 10100083                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/process-0.13.8.jar
+7f49ce988000-7f49ce98d000 r--s 00036000 08:01 10100082                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/command-0.13.8.jar
+7f49ce98d000-7f49ce999000 r--s 000a4000 08:01 10100106                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/quasiquotes_2.10-2.0.1.jar
+7f49ce999000-7f49ce99c000 r--s 0001c000 08:01 10100128                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/compiler-integration-0.13.8.jar
+7f49ce99c000-7f49ce9ab000 r--s 000bb000 08:01 10100105                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/scala-pickling_2.10-0.10.0.jar
+7f49ce9ab000-7f49ce9ae000 r--s 0001d000 08:01 10100099                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/tasks-0.13.8.jar
+7f49ce9ae000-7f49ce9b8000 r--s 00092000 08:01 10100120                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/main-settings-0.13.8.jar
+7f49ce9b8000-7f49ce9ba000 r--s 00002000 08:01 10100110                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/test-interface-1.0.jar
+7f49ce9ba000-7f49ce9be000 r--s 00034000 08:01 10100081                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/jsch-0.1.46.jar
+7f49ce9be000-7f49ce9c3000 r--s 00024000 08:01 10100084                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/persist-0.13.8.jar
+7f49ce9c3000-7f49cebc3000 rw-p 00000000 00:00 0 
+7f49cebc3000-7f49cebf9000 r--s 002d9000 08:01 9833323                    /home/dnwiebe/.sbt/boot/scala-2.10.4/lib/scala-reflect.jar
+7f49cebf9000-7f49cecf6000 r--s 00cca000 08:01 9833324                    /home/dnwiebe/.sbt/boot/scala-2.10.4/lib/scala-compiler.jar
+7f49cecf6000-7f49cedf1000 r--s 00c99000 08:01 3164383                    /home/dnwiebe/.sbt/boot/scala-2.11.6/lib/scala-compiler.jar
+7f49cedf1000-7f49cee02000 r-xp 00000000 08:01 7090246                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnio.so
+7f49cee02000-7f49cf001000 ---p 00011000 08:01 7090246                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnio.so
+7f49cf001000-7f49cf002000 rw-p 00010000 08:01 7090246                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnio.so
+7f49cf002000-7f49cf303000 rw-p 00000000 00:00 0 
+7f49cf303000-7f49cf319000 r-xp 00000000 08:01 7090223                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnet.so
+7f49cf319000-7f49cf519000 ---p 00016000 08:01 7090223                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnet.so
+7f49cf519000-7f49cf51a000 rw-p 00016000 08:01 7090223                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnet.so
+7f49cf51a000-7f49cf51b000 ---p 00000000 00:00 0 
+7f49cf51b000-7f49cf61b000 rw-p 00000000 00:00 0                          [stack:18387]
+7f49cf61b000-7f49cf61e000 ---p 00000000 00:00 0 
+7f49cf61e000-7f49cf71c000 rw-p 00000000 00:00 0                          [stack:18386]
+7f49cf71c000-7f49cf71f000 ---p 00000000 00:00 0 
+7f49cf71f000-7f49cf81d000 rw-p 00000000 00:00 0                          [stack:18385]
+7f49cf81d000-7f49cf820000 ---p 00000000 00:00 0 
+7f49cf820000-7f49cf91e000 rw-p 00000000 00:00 0                          [stack:18384]
+7f49cf91e000-7f49d0000000 r--p 00000000 08:01 2500823                    /usr/lib/locale/locale-archive
+7f49d0000000-7f49d0021000 rw-p 00000000 00:00 0 
+7f49d0021000-7f49d4000000 ---p 00000000 00:00 0 
+7f49d4000000-7f49d4001000 r--s 00001000 08:01 10100080                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/json4s-support_2.10-0.6.0.jar
+7f49d4001000-7f49d4009000 r--s 00060000 08:01 10100096                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/collections-0.13.8.jar
+7f49d4009000-7f49d4013000 r--s 00085000 08:01 10100125                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/json4s-core_2.10-3.2.10.jar
+7f49d4013000-7f49d4016000 r--s 0001d000 08:01 10100091                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/task-system-0.13.8.jar
+7f49d4016000-7f49d4019000 r--s 00018000 08:01 9833322                    /home/dnwiebe/.sbt/boot/scala-2.10.4/lib/jansi.jar
+7f49d4019000-7f49d401d000 r--s 00025000 08:01 9833321                    /home/dnwiebe/.sbt/boot/scala-2.10.4/lib/jline.jar
+7f49d401d000-7f49d408f000 r--s 0065a000 08:01 9833325                    /home/dnwiebe/.sbt/boot/scala-2.10.4/lib/scala-library.jar
+7f49d408f000-7f49d4092000 r--s 0001c000 08:01 3022895                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/activator-launcher-1.3.5.jar
+7f49d4092000-7f49d409a000 r--s 0004e000 08:01 3022896                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/httpclient-4.1.jar
+7f49d409a000-7f49d40a5000 r--s 00096000 08:01 3022891                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/scala-xml_2.11-1.0.1.jar
+7f49d40a5000-7f49d40ac000 r--s 00055000 08:01 3022870                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/completion_2.11-0.13.8.jar
+7f49d40ac000-7f49d40b5000 r--s 00056000 08:01 3022876                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/lucene-queryparser-4.3.0.jar
+7f49d40b5000-7f49d40da000 r--s 0024f000 08:01 3022881                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/akka-actor_2.11-2.3.9.jar
+7f49d40da000-7f49d40e1000 r--s 00042000 08:01 3022873                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/activator-templates-cache-1.0-a0afb008ea619bf9d87dc010156cddffa8a6f880.jar
+7f49d40e1000-7f49d40e4000 ---p 00000000 00:00 0 
+7f49d40e4000-7f49d41e2000 rw-p 00000000 00:00 0                          [stack:18383]
+7f49d41e2000-7f49d41e5000 ---p 00000000 00:00 0 
+7f49d41e5000-7f49d42e3000 rw-p 00000000 00:00 0                          [stack:18382]
+7f49d42e3000-7f49d42e6000 ---p 00000000 00:00 0 
+7f49d42e6000-7f49d43e4000 rw-p 00000000 00:00 0                          [stack:18381]
+7f49d43e4000-7f49d43e7000 ---p 00000000 00:00 0 
+7f49d43e7000-7f49d44e5000 rw-p 00000000 00:00 0                          [stack:18380]
+7f49d44e5000-7f49d44e8000 ---p 00000000 00:00 0 
+7f49d44e8000-7f49d45e6000 rw-p 00000000 00:00 0                          [stack:18379]
+7f49d45e6000-7f49d45e7000 ---p 00000000 00:00 0 
+7f49d45e7000-7f49d8000000 rw-p 00000000 00:00 0                          [stack:18378]
+7f49d8000000-7f49d8021000 rw-p 00000000 00:00 0 
+7f49d8021000-7f49dc000000 ---p 00000000 00:00 0 
+7f49dc000000-7f49dc002000 r--s 00007000 08:01 10100109                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/paranamer-2.6.jar
+7f49dc002000-7f49dc006000 r--s 00032000 08:01 3022877                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/config-1.2.1.jar
+7f49dc006000-7f49dc008000 r--s 00001000 08:01 3022884                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/launcher-interface-0.13.8.jar
+7f49dc008000-7f49dc00b000 r--s 00030000 08:01 3022886                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/jline-2.11.jar
+7f49dc00b000-7f49dc011000 r--s 0002c000 08:01 3022893                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/lucene-queries-4.3.0.jar
+7f49dc011000-7f49dc01e000 r--s 00097000 08:01 3022894                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/jackson-mapper-asl-1.8.9.jar
+7f49dc01e000-7f49dc020000 r--s 0000a000 08:01 3022892                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/commons-codec-1.3.jar
+7f49dc020000-7f49dc022000 r--s 0000a000 08:01 3022872                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/lucene-sandbox-4.3.0.jar
+7f49dc022000-7f49dc027000 r--s 00028000 08:01 3022885                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/httpcore-4.1.jar
+7f49dc027000-7f49dc02b000 r--s 00034000 08:01 3022878                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/jackson-core-asl-1.8.9.jar
+7f49dc02b000-7f49dc031000 r--s 0003b000 08:01 3022875                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/io_2.11-0.13.8.jar
+7f49dc031000-7f49dc039000 r--s 0005e000 08:01 3022889                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/collections_2.11-0.13.8.jar
+7f49dc039000-7f49dc0f9000 r--s 0072c000 08:01 3022887                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/aws-java-sdk-1.3.29.jar
+7f49dc0f9000-7f49dd000000 rw-p 00000000 00:00 0 
+7f49dd000000-7f49e1f70000 rwxp 00000000 00:00 0 
+7f49e1f70000-7f49ec000000 ---p 00000000 00:00 0 
+7f49ec000000-7f49eded7000 rw-p 00000000 00:00 0 
+7f49eded7000-7f49f0000000 ---p 00000000 00:00 0 
+7f49f0000000-7f49f0010000 r--s 0016e000 08:01 3022869                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/lucene-analyzers-common-4.3.0.jar
+7f49f0010000-7f49f0016000 r--s 0003d000 08:01 3022890                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/activator-common-1.0-a0afb008ea619bf9d87dc010156cddffa8a6f880.jar
+7f49f0016000-7f49f0021000 r--s 00094000 08:01 3164388                    /home/dnwiebe/.sbt/boot/scala-2.11.6/lib/scala-xml_2.11.jar
+7f49f0021000-7f49f006d000 r--s 003f3000 08:01 3164385                    /home/dnwiebe/.sbt/boot/scala-2.11.6/lib/scala-reflect.jar
+7f49f006d000-7f49f00c6000 r--s 004f6000 08:01 3164386                    /home/dnwiebe/.sbt/boot/scala-2.11.6/lib/scala-library.jar
+7f49f00c6000-7f49f01c7000 rw-p 00000000 00:00 0 
+7f49f01c7000-7f49f039f000 r--s 03d1d000 08:01 7090215                    /usr/lib/jvm/java-8-oracle/jre/lib/rt.jar
+7f49f039f000-7f49f0615000 rw-p 00000000 00:00 0 
+7f49f0615000-7f49f0616000 ---p 00000000 00:00 0 
+7f49f0616000-7f49f0716000 rw-p 00000000 00:00 0                          [stack:18377]
+7f49f0716000-7f49f0717000 ---p 00000000 00:00 0 
+7f49f0717000-7f49f0817000 rw-p 00000000 00:00 0                          [stack:18376]
+7f49f0817000-7f49f0818000 ---p 00000000 00:00 0 
+7f49f0818000-7f49f0918000 rw-p 00000000 00:00 0                          [stack:18375]
+7f49f0918000-7f49f0919000 ---p 00000000 00:00 0 
+7f49f0919000-7f49f0a19000 rw-p 00000000 00:00 0                          [stack:18374]
+7f49f0a19000-7f49f0a1a000 ---p 00000000 00:00 0 
+7f49f0a1a000-7f49f0b1a000 rw-p 00000000 00:00 0                          [stack:18373]
+7f49f0b1a000-7f49f0b1b000 ---p 00000000 00:00 0 
+7f49f0b1b000-7f49f0c1b000 rw-p 00000000 00:00 0                          [stack:18372]
+7f49f0c1b000-7f49f0c1c000 ---p 00000000 00:00 0 
+7f49f0c1c000-7f49f0d1c000 rw-p 00000000 00:00 0                          [stack:18371]
+7f49f0d1c000-7f49f0d1d000 ---p 00000000 00:00 0 
+7f49f0d1d000-7f49f0e1d000 rw-p 00000000 00:00 0                          [stack:18370]
+7f49f0e1d000-7f49f0e1e000 ---p 00000000 00:00 0 
+7f49f0e1e000-7f49f0f1e000 rw-p 00000000 00:00 0                          [stack:18369]
+7f49f0f1e000-7f49f0f1f000 ---p 00000000 00:00 0 
+7f49f0f1f000-7f49f14b4000 rw-p 00000000 00:00 0                          [stack:18368]
+7f49f14b4000-7f49f1736000 ---p 00000000 00:00 0 
+7f49f1736000-7f49f1750000 r-xp 00000000 08:01 7090244                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libzip.so
+7f49f1750000-7f49f1950000 ---p 0001a000 08:01 7090244                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libzip.so
+7f49f1950000-7f49f1951000 rw-p 0001a000 08:01 7090244                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libzip.so
+7f49f1951000-7f49f195d000 r-xp 00000000 08:01 1324848                    /lib/x86_64-linux-gnu/libnss_files-2.21.so
+7f49f195d000-7f49f1b5c000 ---p 0000c000 08:01 1324848                    /lib/x86_64-linux-gnu/libnss_files-2.21.so
+7f49f1b5c000-7f49f1b5d000 r--p 0000b000 08:01 1324848                    /lib/x86_64-linux-gnu/libnss_files-2.21.so
+7f49f1b5d000-7f49f1b5e000 rw-p 0000c000 08:01 1324848                    /lib/x86_64-linux-gnu/libnss_files-2.21.so
+7f49f1b5e000-7f49f1b69000 r-xp 00000000 08:01 1324860                    /lib/x86_64-linux-gnu/libnss_nis-2.21.so
+7f49f1b69000-7f49f1d68000 ---p 0000b000 08:01 1324860                    /lib/x86_64-linux-gnu/libnss_nis-2.21.so
+7f49f1d68000-7f49f1d69000 r--p 0000a000 08:01 1324860                    /lib/x86_64-linux-gnu/libnss_nis-2.21.so
+7f49f1d69000-7f49f1d6a000 rw-p 0000b000 08:01 1324860                    /lib/x86_64-linux-gnu/libnss_nis-2.21.so
+7f49f1d6a000-7f49f1d81000 r-xp 00000000 08:01 1324854                    /lib/x86_64-linux-gnu/libnsl-2.21.so
+7f49f1d81000-7f49f1f80000 ---p 00017000 08:01 1324854                    /lib/x86_64-linux-gnu/libnsl-2.21.so
+7f49f1f80000-7f49f1f81000 r--p 00016000 08:01 1324854                    /lib/x86_64-linux-gnu/libnsl-2.21.so
+7f49f1f81000-7f49f1f82000 rw-p 00017000 08:01 1324854                    /lib/x86_64-linux-gnu/libnsl-2.21.so
+7f49f1f82000-7f49f1f84000 rw-p 00000000 00:00 0 
+7f49f1f84000-7f49f1f8c000 r-xp 00000000 08:01 1324850                    /lib/x86_64-linux-gnu/libnss_compat-2.21.so
+7f49f1f8c000-7f49f218b000 ---p 00008000 08:01 1324850                    /lib/x86_64-linux-gnu/libnss_compat-2.21.so
+7f49f218b000-7f49f218c000 r--p 00007000 08:01 1324850                    /lib/x86_64-linux-gnu/libnss_compat-2.21.so
+7f49f218c000-7f49f218d000 rw-p 00008000 08:01 1324850                    /lib/x86_64-linux-gnu/libnss_compat-2.21.so
+7f49f218d000-7f49f21b7000 r-xp 00000000 08:01 7090270                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libjava.so
+7f49f21b7000-7f49f23b7000 ---p 0002a000 08:01 7090270                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libjava.so
+7f49f23b7000-7f49f23b9000 rw-p 0002a000 08:01 7090270                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libjava.so
+7f49f23b9000-7f49f23c6000 r-xp 00000000 08:01 7090224                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libverify.so
+7f49f23c6000-7f49f25c6000 ---p 0000d000 08:01 7090224                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libverify.so
+7f49f25c6000-7f49f25c8000 rw-p 0000d000 08:01 7090224                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libverify.so
+7f49f25c8000-7f49f25cf000 r-xp 00000000 08:01 1324845                    /lib/x86_64-linux-gnu/librt-2.21.so
+7f49f25cf000-7f49f27ce000 ---p 00007000 08:01 1324845                    /lib/x86_64-linux-gnu/librt-2.21.so
+7f49f27ce000-7f49f27cf000 r--p 00006000 08:01 1324845                    /lib/x86_64-linux-gnu/librt-2.21.so
+7f49f27cf000-7f49f27d0000 rw-p 00007000 08:01 1324845                    /lib/x86_64-linux-gnu/librt-2.21.so
+7f49f27d0000-7f49f28d7000 r-xp 00000000 08:01 1324862                    /lib/x86_64-linux-gnu/libm-2.21.so
+7f49f28d7000-7f49f2ad6000 ---p 00107000 08:01 1324862                    /lib/x86_64-linux-gnu/libm-2.21.so
+7f49f2ad6000-7f49f2ad7000 r--p 00106000 08:01 1324862                    /lib/x86_64-linux-gnu/libm-2.21.so
+7f49f2ad7000-7f49f2ad8000 rw-p 00107000 08:01 1324862                    /lib/x86_64-linux-gnu/libm-2.21.so
+7f49f2ad8000-7f49f3797000 r-xp 00000000 08:01 7090274                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/libjvm.so
+7f49f3797000-7f49f3996000 ---p 00cbf000 08:01 7090274                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/libjvm.so
+7f49f3996000-7f49f3a6f000 rw-p 00cbe000 08:01 7090274                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/libjvm.so
+7f49f3a6f000-7f49f3ab8000 rw-p 00000000 00:00 0 
+7f49f3ab8000-7f49f3c78000 r-xp 00000000 08:01 1324863                    /lib/x86_64-linux-gnu/libc-2.21.so
+7f49f3c78000-7f49f3e78000 ---p 001c0000 08:01 1324863                    /lib/x86_64-linux-gnu/libc-2.21.so
+7f49f3e78000-7f49f3e7c000 r--p 001c0000 08:01 1324863                    /lib/x86_64-linux-gnu/libc-2.21.so
+7f49f3e7c000-7f49f3e7e000 rw-p 001c4000 08:01 1324863                    /lib/x86_64-linux-gnu/libc-2.21.so
+7f49f3e7e000-7f49f3e82000 rw-p 00000000 00:00 0 
+7f49f3e82000-7f49f3e85000 r-xp 00000000 08:01 1324859                    /lib/x86_64-linux-gnu/libdl-2.21.so
+7f49f3e85000-7f49f4084000 ---p 00003000 08:01 1324859                    /lib/x86_64-linux-gnu/libdl-2.21.so
+7f49f4084000-7f49f4085000 r--p 00002000 08:01 1324859                    /lib/x86_64-linux-gnu/libdl-2.21.so
+7f49f4085000-7f49f4086000 rw-p 00003000 08:01 1324859                    /lib/x86_64-linux-gnu/libdl-2.21.so
+7f49f4086000-7f49f409b000 r-xp 00000000 08:01 7090260                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/jli/libjli.so
+7f49f409b000-7f49f429b000 ---p 00015000 08:01 7090260                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/jli/libjli.so
+7f49f429b000-7f49f429c000 rw-p 00015000 08:01 7090260                    /usr/lib/jvm/java-8-oracle/jre/lib/amd64/jli/libjli.so
+7f49f429c000-7f49f42b4000 r-xp 00000000 08:01 1324846                    /lib/x86_64-linux-gnu/libpthread-2.21.so
+7f49f42b4000-7f49f44b4000 ---p 00018000 08:01 1324846                    /lib/x86_64-linux-gnu/libpthread-2.21.so
+7f49f44b4000-7f49f44b5000 r--p 00018000 08:01 1324846                    /lib/x86_64-linux-gnu/libpthread-2.21.so
+7f49f44b5000-7f49f44b6000 rw-p 00019000 08:01 1324846                    /lib/x86_64-linux-gnu/libpthread-2.21.so
+7f49f44b6000-7f49f44ba000 rw-p 00000000 00:00 0 
+7f49f44ba000-7f49f44de000 r-xp 00000000 08:01 1324857                    /lib/x86_64-linux-gnu/ld-2.21.so
+7f49f44de000-7f49f44df000 r--s 00005000 08:01 10100093                   /home/dnwiebe/.sbt/boot/scala-2.10.4/org.scala-sbt/sbt/0.13.8/test-agent-0.13.8.jar
+7f49f44df000-7f49f44fb000 r--s 0010d000 08:01 9314921                    /home/dnwiebe/Documents/Workspaces/IntelliJ/CSE/Play/activator-launch-1.3.7.jar
+7f49f44fb000-7f49f45b9000 rw-p 00000000 00:00 0 
+7f49f45b9000-7f49f45bc000 ---p 00000000 00:00 0 
+7f49f45bc000-7f49f46be000 rw-p 00000000 00:00 0                          [stack:18367]
+7f49f46be000-7f49f46bf000 r--s 00006000 08:01 3022883                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/jakarta-regexp-1.4.jar
+7f49f46bf000-7f49f46c0000 r--s 00001000 08:01 3022871                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/activator-props-1.3.5.jar
+7f49f46c0000-7f49f46c2000 r--s 0000d000 08:01 3022888                    /home/dnwiebe/.sbt/boot/scala-2.11.6/com.typesafe.activator/activator-launcher/1.3.5/commons-logging-1.1.1.jar
+7f49f46c2000-7f49f46cd000 r--s 0005b000 08:01 3164387                    /home/dnwiebe/.sbt/boot/scala-2.11.6/lib/scala-parser-combinators_2.11.jar
+7f49f46cd000-7f49f46d1000 r--s 00031000 08:01 3164384                    /home/dnwiebe/.sbt/boot/scala-2.11.6/lib/jline.jar
+7f49f46d1000-7f49f46d9000 rw-s 00000000 08:01 1844818                    /tmp/hsperfdata_dnwiebe/18314
+7f49f46d9000-7f49f46da000 rw-p 00000000 00:00 0 
+7f49f46da000-7f49f46db000 ---p 00000000 00:00 0 
+7f49f46db000-7f49f46dd000 rw-p 00000000 00:00 0 
+7f49f46dd000-7f49f46de000 r--p 00023000 08:01 1324857                    /lib/x86_64-linux-gnu/ld-2.21.so
+7f49f46de000-7f49f46df000 rw-p 00024000 08:01 1324857                    /lib/x86_64-linux-gnu/ld-2.21.so
+7f49f46df000-7f49f46e0000 rw-p 00000000 00:00 0 
+7ffe88147000-7ffe88169000 rw-p 00000000 00:00 0                          [stack]
+7ffe881c7000-7ffe881c9000 r--p 00000000 00:00 0                          [vvar]
+7ffe881c9000-7ffe881cb000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Dactivator.home=/home/dnwiebe/Documents/Workspaces/IntelliJ/CSE/Play -Xms1024m -Xmx1024m -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=256m 
+java_command: /home/dnwiebe/Documents/Workspaces/IntelliJ/CSE/Play/activator-launch-1.3.7.jar run
+java_class_path (initial): /home/dnwiebe/Documents/Workspaces/IntelliJ/CSE/Play/activator-launch-1.3.7.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/home/dnwiebe/.rvm/gems/ruby-2.2.1/bin:/home/dnwiebe/.rvm/gems/ruby-2.2.1@global/bin:/home/dnwiebe/.rvm/rubies/ruby-2.2.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/dnwiebe/.rvm/bin:/home/dnwiebe/.rvm/bin:/home/dnwiebe/.rvm/bin
+LD_LIBRARY_PATH=/home/dnwiebe/Programs/IntelliJ IDEA/current_version/bin:
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xabb070], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xabb070], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x918480], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x918480], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x918480], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x918480], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x919ab0], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x91aeb0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x91aeb0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x91aeb0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x91aeb0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=15.10
+DISTRIB_CODENAME=wily
+DISTRIB_DESCRIPTION="Ubuntu 15.10"
+
+uname:Linux 4.2.0-30-generic #36-Ubuntu SMP Fri Feb 26 00:58:07 UTC 2016 x86_64
+libc:glibc 2.21 NPTL 2.21 
+rlimit: STACK 8192k, CORE 0k, NPROC 128263, NOFILE 65536, AS infinity
+load average:0.66 0.61 0.59
+
+/proc/meminfo:
+MemTotal:       32869524 kB
+MemFree:          227220 kB
+MemAvailable:   22634344 kB
+Buffers:          732336 kB
+Cached:         21294636 kB
+SwapCached:           16 kB
+Active:         13589704 kB
+Inactive:       18007772 kB
+Active(anon):    9500236 kB
+Inactive(anon):   275844 kB
+Active(file):    4089468 kB
+Inactive(file): 17731928 kB
+Unevictable:          96 kB
+Mlocked:              96 kB
+SwapTotal:      16698364 kB
+SwapFree:       16698336 kB
+Dirty:             18144 kB
+Writeback:             0 kB
+AnonPages:       9570748 kB
+Mapped:           644312 kB
+Shmem:            205584 kB
+Slab:             746568 kB
+SReclaimable:     671552 kB
+SUnreclaim:        75016 kB
+KernelStack:       20608 kB
+PageTables:        92404 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    33133124 kB
+Committed_AS:   19826260 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:      169832 kB
+VmallocChunk:   34359486460 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:   5367808 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      580332 kB
+DirectMap2M:    15071232 kB
+DirectMap1G:    17825792 kB
+
+
+CPU:total 12 (6 cores per cpu, 2 threads per core) family 6 model 45 stepping 7, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, aes, clmul, ht, tsc, tscinvbit, tscinv
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 45
+model name	: Intel(R) Core(TM) i7-3930K CPU @ 3.20GHz
+stepping	: 7
+microcode	: 0x710
+cpu MHz		: 3500.000
+cache size	: 12288 KB
+physical id	: 0
+siblings	: 12
+core id		: 0
+cpu cores	: 6
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm ida arat epb pln pts dtherm tpr_shadow vnmi flexpriority ept vpid xsaveopt
+bugs		:
+bogomips	: 6399.86
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 45
+model name	: Intel(R) Core(TM) i7-3930K CPU @ 3.20GHz
+stepping	: 7
+microcode	: 0x710
+cpu MHz		: 3499.875
+cache size	: 12288 KB
+physical id	: 0
+siblings	: 12
+core id		: 0
+cpu cores	: 6
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm ida arat epb pln pts dtherm tpr_shadow vnmi flexpriority ept vpid xsaveopt
+bugs		:
+bogomips	: 6399.86
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 45
+model name	: Intel(R) Core(TM) i7-3930K CPU @ 3.20GHz
+stepping	: 7
+microcode	: 0x710
+cpu MHz		: 3499.875
+cache size	: 12288 KB
+physical id	: 0
+siblings	: 12
+core id		: 1
+cpu cores	: 6
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm ida arat epb pln pts dtherm tpr_shadow vnmi flexpriority ept vpid xsaveopt
+bugs		:
+bogomips	: 6399.86
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 45
+model name	: Intel(R) Core(TM) i7-3930K CPU @ 3.20GHz
+stepping	: 7
+microcode	: 0x710
+cpu MHz		: 3499.875
+cache size	: 12288 KB
+physical id	: 0
+siblings	: 12
+core id		: 1
+cpu cores	: 6
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm ida arat epb pln pts dtherm tpr_shadow vnmi flexpriority ept vpid xsaveopt
+bugs		:
+bogomips	: 6399.86
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 4
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 45
+model name	: Intel(R) Core(TM) i7-3930K CPU @ 3.20GHz
+stepping	: 7
+microcode	: 0x710
+cpu MHz		: 3499.875
+cache size	: 12288 KB
+physical id	: 0
+siblings	: 12
+core id		: 2
+cpu cores	: 6
+apicid		: 4
+initial apicid	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm ida arat epb pln pts dtherm tpr_shadow vnmi flexpriority ept vpid xsaveopt
+bugs		:
+bogomips	: 6399.86
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 5
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 45
+model name	: Intel(R) Core(TM) i7-3930K CPU @ 3.20GHz
+stepping	: 7
+microcode	: 0x710
+cpu MHz		: 3498.250
+cache size	: 12288 KB
+physical id	: 0
+siblings	: 12
+core id		: 2
+cpu cores	: 6
+apicid		: 5
+initial apicid	: 5
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm ida arat epb pln pts dtherm tpr_shadow vnmi flexpriority ept vpid xsaveopt
+bugs		:
+bogomips	: 6399.86
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 6
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 45
+model name	: Intel(R) Core(TM) i7-3930K CPU @ 3.20GHz
+stepping	: 7
+microcode	: 0x710
+cpu MHz		: 3499.875
+cache size	: 12288 KB
+physical id	: 0
+siblings	: 12
+core id		: 3
+cpu cores	: 6
+apicid		: 6
+initial apicid	: 6
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm ida arat epb pln pts dtherm tpr_shadow vnmi flexpriority ept vpid xsaveopt
+bugs		:
+bogomips	: 6399.86
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 7
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 45
+model name	: Intel(R) Core(TM) i7-3930K CPU @ 3.20GHz
+stepping	: 7
+microcode	: 0x710
+cpu MHz		: 3499.875
+cache size	: 12288 KB
+physical id	: 0
+siblings	: 12
+core id		: 3
+cpu cores	: 6
+apicid		: 7
+initial apicid	: 7
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm ida arat epb pln pts dtherm tpr_shadow vnmi flexpriority ept vpid xsaveopt
+bugs		:
+bogomips	: 6399.86
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 8
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 45
+model name	: Intel(R) Core(TM) i7-3930K CPU @ 3.20GHz
+stepping	: 7
+microcode	: 0x710
+cpu MHz		: 3500.000
+cache size	: 12288 KB
+physical id	: 0
+siblings	: 12
+core id		: 4
+cpu cores	: 6
+apicid		: 8
+initial apicid	: 8
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm ida arat epb pln pts dtherm tpr_shadow vnmi flexpriority ept vpid xsaveopt
+bugs		:
+bogomips	: 6399.86
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 9
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 45
+model name	: Intel(R) Core(TM) i7-3930K CPU @ 3.20GHz
+stepping	: 7
+microcode	: 0x710
+cpu MHz		: 3499.875
+cache size	: 12288 KB
+physical id	: 0
+siblings	: 12
+core id		: 4
+cpu cores	: 6
+apicid		: 9
+initial apicid	: 9
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm ida arat epb pln pts dtherm tpr_shadow vnmi flexpriority ept vpid xsaveopt
+bugs		:
+bogomips	: 6399.86
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 10
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 45
+model name	: Intel(R) Core(TM) i7-3930K CPU @ 3.20GHz
+stepping	: 7
+microcode	: 0x710
+cpu MHz		: 3500.000
+cache size	: 12288 KB
+physical id	: 0
+siblings	: 12
+core id		: 5
+cpu cores	: 6
+apicid		: 10
+initial apicid	: 10
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm ida arat epb pln pts dtherm tpr_shadow vnmi flexpriority ept vpid xsaveopt
+bugs		:
+bogomips	: 6399.86
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 11
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 45
+model name	: Intel(R) Core(TM) i7-3930K CPU @ 3.20GHz
+stepping	: 7
+microcode	: 0x710
+cpu MHz		: 2471.375
+cache size	: 12288 KB
+physical id	: 0
+siblings	: 12
+core id		: 5
+cpu cores	: 6
+apicid		: 11
+initial apicid	: 11
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm ida arat epb pln pts dtherm tpr_shadow vnmi flexpriority ept vpid xsaveopt
+bugs		:
+bogomips	: 6399.86
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 32869524k(227220k free), swap 16698364k(16698336k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.74-b02) for linux-amd64 JRE (1.8.0_74-b02), built on Jan 29 2016 19:20:56 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+
+time: Mon Mar  7 06:35:16 2016
+elapsed time: 60116 seconds (0d 16h 41m 56s)
+

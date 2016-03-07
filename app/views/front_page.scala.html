@@ -1,0 +1,12 @@
+@()
+
+<html>
+    <head>
+
+    </head>
+    <body>
+        @helper.form(action = routes.GameController.startOrJoin()) {
+            <input type="submit" name="submit" value="Start or Join">
+        }
+    </body>
+</html>

@@ -1,0 +1,28 @@
+@(maxScore: Int)(implicit request: RequestHeader)
+
+<html>
+    <head>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <script language="javascript" src="assets/javascripts/Utils.js"></script>
+        <script language="javascript" src="assets/javascripts/PlayingFieldManager.js"></script>
+        <script language="javascript" src="assets/javascripts/ScoreDisplayManager.js"></script>
+        <script language="javascript" src="assets/javascripts/GameManager.js"></script>
+    </head>
+    <body>
+        <div class="score-display" id="score-display" style="width:800px; height:200px; background-color: #E0E0E0;"></div>
+        <div class="playing-field" id="playing-field" style="width:800px; height:600px; background-color: #F0F0F0;">
+            <img class="target" id="target" style="visibility:hidden;" src="assets/images/target.png">
+        </div>
+        <script language="javascript">
+            var pfdiv = document.getElementById ("playing-field");
+            var sddiv = document.getElementById ("score-display");
+            var targimg = document.getElementById ("target");
+            var playingField = PlayingFieldManager (pfdiv, targimg);
+            var scoreDisplay = ScoreDisplayManager (sddiv, @maxScore, [
+                "#000000", "#7F007F", "#7F0000", "#7F7F00", "#007F00", "#007F7F", "#00007F"
+            ]);
+            var gameManager = GameManager (playingField, scoreDisplay);
+            gameManager.start ("@routes.GameController.socket.webSocketURL()");
+        </script>
+    </body>
+</html>
