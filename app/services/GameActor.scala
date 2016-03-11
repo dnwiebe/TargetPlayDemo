@@ -1,49 +1,77 @@
 package services
 
-import akka.actor.{ActorSystem, Props, ActorRef, Actor}
+import akka.actor._
 
 /**
   * Created by dnwiebe on 3/6/16.
   */
 
 case class ScoreIncrement (id: Int, increment: Int)
-
-object GameActor {
-  def apply (implicit system: ActorSystem): ActorRef = {
-    system.actorOf (Props (classOf[GameActor]))
+case class JoinRequest (name: String)
+case class Invitation (id: Int, name: String)
+case class Winner (id: Int, name: String)
+case class PlayerState (id: Int, name: String, representative: ActorRef, score: Int) {
+  def afterScoreIncrement (increment: Int): PlayerState = {
+    PlayerState (id, name, representative, score + increment)
   }
 }
 
-class GameActor extends Actor {
-  private val entries: scala.collection.mutable.Map[Int, Entry] = scala.collection.mutable.Map ()
+object GameActor {
+  def apply (limit: Int) (implicit system: ActorSystem): ActorRef = {
+    system.actorOf (Props (classOf[GameActor], limit))
+  }
+}
+
+class GameActor (limit: Int) extends Actor {
+  private var playerStates: List[PlayerState] = Nil
+  private var nextId = 0
+
+  private var entries: List[Entry] = Nil
 
   def receive = {
+    case msg: JoinRequest => handleJoinRequest (msg.name)
     case increment: ScoreIncrement => handleScoreIncrement (increment.id, increment.increment)
   }
 
-  private def handleScoreIncrement (id: Int, increment: Int): Unit = {
-    if (entries.contains (id)) {
-      entries(id).score += increment
+  private def handleJoinRequest (name: String): Unit = {
+    playerStates.find {_.name == name} match {
+      case Some (existingPlayer) => {
+        val replacement = PlayerState (existingPlayer.id, existingPlayer.name, sender, existingPlayer.score)
+        existingPlayer.representative ! PoisonPill
+        playerStates = playerStates.map {p => if (p.id == existingPlayer.id) replacement else p}
+        sender ! Invitation (existingPlayer.id, name)
+      }
+      case None => {
+        playerStates = playerStates ++ List (PlayerState (nextId, name, sender, 0))
+        sender ! Invitation (nextId, name)
+        nextId += 1
+      }
     }
-    else {
-      entries(id) = Entry (id, sender (), increment)
+    publishScores ()
+  }
+
+  private def handleScoreIncrement (id: Int, increment: Int): Unit = {
+    playerStates = playerStates.map {playerState =>
+      playerState.id == id match {
+        case false => playerState
+        case true => playerState.afterScoreIncrement (increment)
+      }
     }
     publishScores ()
   }
 
   private def publishScores (): Unit = {
-    val gameOver = entries.values.foldLeft (false) {(soFar, entry) =>
-      val scores = entry.score :: entries.values.filter {v => v.id != entry.id}.map {e => e.score}.toList
-      entry.representative ! scores
-      soFar || entry.score >= 100
+    val winnerOpt = playerStates.find {_.score >= limit}
+    playerStates.foreach {playerState => playerState.representative ! playerStates}
+    winnerOpt match {
+      case Some (winner) => handleWin (winner)
+      case None =>
     }
-    if (gameOver) {
-      entries.values.foreach {entry =>
-  println (s"Stopping id ${entry.id}")
-        entry.representative ! Stop ()
-      }
-      entries.clear ()
-    }
+  }
+
+  private def handleWin (winnerState: PlayerState): Unit = {
+    playerStates.foreach {playerState => playerState.representative ! Winner (winnerState.id, winnerState.name)}
+    playerStates = Nil
   }
 
   private case class Entry (id: Int, representative: ActorRef, var score: Int)

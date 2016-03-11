@@ -16,10 +16,11 @@ describe ("A GameManager with playing field and score display mocked", function 
         playingField.stop = jasmine.createSpy ("stop");
         scoreDisplay = {};
         scoreDisplay.showScores = jasmine.createSpy ("showScores");
+        scoreDisplay.winner = jasmine.createSpy ("winner");
         webSocket = {};
         webSocket.send = jasmine.createSpy ("send");
         spyOn (Utils, "websocket").and.returnValue (webSocket);
-        subject = GameManager (playingField, scoreDisplay);
+        subject = GameManager (playingField, scoreDisplay, "Pudge");
     });
 
     describe ("instructed to start a game", function () {
@@ -34,8 +35,8 @@ describe ("A GameManager with playing field and score display mocked", function 
             expect (scoreCallback).not.toBeNull ();
         });
 
-        it ("passes on the instruction to the playing field", function () {
-            expect (playingField.start).toHaveBeenCalled ();
+        it ("does not pass on the instruction to the playing field", function () {
+            expect (playingField.start).not.toHaveBeenCalled ();
         });
 
         it ("initializes the web socket", function () {
@@ -43,46 +44,71 @@ describe ("A GameManager with playing field and score display mocked", function 
             expect (Utils.websocket.calls.mostRecent ().args[0]).toBe (url);
         });
 
-        describe ("and, during the ensuing game", function () {
-            var scoreHandler = null;
-            var stopHandler = null;
+        it ("sends a join request to the back end", function () {
+            expect (webSocket.send).toHaveBeenCalledWith ("joinRequest", {name: "Pudge"});
+        });
+
+        describe ("and being in receipt of an invitation", function () {
+            var websocketCallbacks = null;
 
             beforeEach(function () {
-                var websocketCallbacks = Utils.websocket.calls.mostRecent ().args[1].events;
-                scoreHandler = websocketCallbacks["progress"];
-                stopHandler = websocketCallbacks["stop"];
+                websocketCallbacks = Utils.websocket.calls.mostRecent().args[1].events;
+                websocketCallbacks["invitation"] (1234, "Pudge");
             });
 
-            describe ("directed to report a set of scores by the back end", function () {
-
-                beforeEach (function () {
-                    scoreHandler ([34, 45, 56]);
-                });
-
-                it ("relays the set of scores to the score display", function () {
-                    expect (scoreDisplay.showScores).toHaveBeenCalledWith ([34, 45, 56]);
-                });
+            it("passes on the instruction to the playing field", function () {
+                expect(playingField.start).toHaveBeenCalled();
             });
 
-            describe("given a score by the playing field", function () {
+            describe("and, during the ensuing game", function () {
+                var scoreHandler = null;
+                var winnerHandler = null;
 
                 beforeEach(function () {
-                    scoreCallback(3);
+                    scoreHandler = websocketCallbacks["progress"];
+                    winnerHandler = websocketCallbacks["winner"];
                 });
 
-                it("sends the score to the back end", function () {
-                    expect(webSocket.send).toHaveBeenCalledWith("score", {increment: 3});
+                describe("directed to report a set of scores by the back end", function () {
+
+                    beforeEach(function () {
+                        scoreHandler([
+                            {id: 1, name: "Freddie", score: 34},
+                            {id: 2, name: "Billy", score: 45},
+                            {id: 3, name: "Stanley", score: 56}
+                        ]);
+                    });
+
+                    it("relays the set of scores to the score display", function () {
+                        expect(scoreDisplay.showScores).toHaveBeenCalledWith([
+                            {id: 1, name: "Freddie", score: 34},
+                            {id: 2, name: "Billy", score: 45},
+                            {id: 3, name: "Stanley", score: 56}
+                        ]);
+                    });
                 });
-            });
 
-            describe("instructed to stop", function () {
+                describe("given a score by the playing field", function () {
 
-                beforeEach (function () {
-                    stopHandler();
+                    beforeEach(function () {
+                        scoreCallback(3);
+                    });
+
+                    it("sends the score to the back end", function () {
+                        expect(webSocket.send).toHaveBeenCalledWith("score", {increment: 3});
+                    });
                 });
 
-                it ("stops the playing field", function () {
-                    expect (playingField.stop).toHaveBeenCalled ();
+                describe("informed of a winner", function () {
+
+                    beforeEach(function () {
+                        winnerHandler(123, "Moochie");
+                    });
+
+                    it("stops the playing field", function () {
+                        expect(scoreDisplay.winner).toHaveBeenCalledWith(123, "Moochie");
+                        expect(playingField.stop).toHaveBeenCalled ();
+                    });
                 });
             });
         });

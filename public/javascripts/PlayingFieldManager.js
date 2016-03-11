@@ -3,14 +3,13 @@
  */
 
 var PlayingFieldManager = function (div, target) {
-    var width = div.clientWidth - target.naturalWidth;
-    var height = div.clientHeight - target.naturalHeight;
     var scoreCallback = function () {};
     var timeout = null;
 
     function clickHandler (event) {
-        var x = event.offsetX - 50;
-        var y = event.offsetY - 50;
+        var targetRect = target.getBoundingClientRect ();
+        var x = event.clientX - targetRect.left - 50;
+        var y = event.clientY - targetRect.top - 50;
         var distance = Math.sqrt ((x * x) + (y * y));
         var score = 10 - Math.floor ((distance - 1.0) / 5);
         if (score > 0) {
@@ -21,8 +20,12 @@ var PlayingFieldManager = function (div, target) {
     }
 
     function moveTarget () {
-        var x = self.rng () * width;
-        var y = self.rng () * height;
+        var divRect = div.getBoundingClientRect ();
+        var targetRect = target.getBoundingClientRect ();
+        var availableWidth = divRect.width - targetRect.width;
+        var availableHeight = divRect.height - targetRect.height;
+        var x = self.rng () * availableWidth;
+        var y = self.rng () * availableHeight;
         target.style.position = "relative";
         target.style.visibility = "visible";
         target.style.left = x.toFixed (0) + 'px';

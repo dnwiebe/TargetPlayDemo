@@ -20,8 +20,9 @@ class GameControllerTest extends org.scalatest.path.FunSpec {
       }
     }
 
-    describe ("asked for the game page") {
-      val resultFuture = subject.startOrJoin(FakeRequest ())
+    describe ("asked for the game page, with a name in the form") {
+      val request = FakeRequest ("POST", "path").withFormUrlEncodedBody(("name", "Pudge"))
+      val resultFuture = subject.startOrJoin(request)
 
       it ("presents a page that loads the proper JavaScript") {
         val bodyText = contentAsString (resultFuture)
@@ -29,6 +30,21 @@ class GameControllerTest extends org.scalatest.path.FunSpec {
         assert (bodyText.contains ("PlayingFieldManager.js"))
         assert (bodyText.contains ("ScoreDisplayManager.js"))
         assert (bodyText.contains ("Utils.js"))
+      }
+
+      it ("creates a GameManager with the player's name") {
+        val bodyText = contentAsString (resultFuture)
+        assert (bodyText.contains ("""GameManager (playingField, scoreDisplay, "Pudge")"""))
+      }
+    }
+
+    describe ("asked for the game page, with no name in the form") {
+      val request = FakeRequest ("POST", "path").withFormUrlEncodedBody(("name", ""))
+      val resultFuture = subject.startOrJoin(request)
+
+      it ("presents the front page again") {
+        val bodyText = contentAsString (resultFuture)
+        assert (bodyText.contains ("Start or Join"))
       }
     }
   }

@@ -1,0 +1,19 @@
+#score-display {
+    width: 800px;
+    height: 200px;
+    background-color: #E0E0E0;
+}
+
+#playing-field {
+    width: 800px;
+    height: 600px;
+    background-color: #F0F0F0;
+}
+
+#target {
+    visibility: hidden;
+}
+
+h1, h2, span, div, p {
+    font-family: sans-serif
+}

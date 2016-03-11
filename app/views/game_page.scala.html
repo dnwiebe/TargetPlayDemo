@@ -1,17 +1,17 @@
-@(maxScore: Int)(implicit request: RequestHeader)
+@(maxScore: Int, playerName: String)(implicit request: RequestHeader)
 
 <html>
     <head>
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
-        <script language="javascript" src="assets/javascripts/Utils.js"></script>
-        <script language="javascript" src="assets/javascripts/PlayingFieldManager.js"></script>
-        <script language="javascript" src="assets/javascripts/ScoreDisplayManager.js"></script>
-        <script language="javascript" src="assets/javascripts/GameManager.js"></script>
+        <script language="javascript" src="@routes.Assets.versioned("javascripts/Utils.js")"></script>
+        <script language="javascript" src="@routes.Assets.versioned("javascripts/PlayingFieldManager.js")"></script>
+        <script language="javascript" src="@routes.Assets.versioned("javascripts/ScoreDisplayManager.js")"></script>
+        <script language="javascript" src="@routes.Assets.versioned("javascripts/GameManager.js")"></script>
     </head>
     <body>
-        <div class="score-display" id="score-display" style="width:800px; height:200px; background-color: #E0E0E0;"></div>
-        <div class="playing-field" id="playing-field" style="width:800px; height:600px; background-color: #F0F0F0;">
-            <img class="target" id="target" style="visibility:hidden;" src="assets/images/target.png">
+        <div id="score-display" style="width:800px;height:200px;"></div>
+        <div id="playing-field" style="width:800px;height:600px;">
+            <img id="target" src="@routes.Assets.versioned("images/target.png")">
         </div>
         <script language="javascript">
             var pfdiv = document.getElementById ("playing-field");
@@ -19,9 +19,9 @@
             var targimg = document.getElementById ("target");
             var playingField = PlayingFieldManager (pfdiv, targimg);
             var scoreDisplay = ScoreDisplayManager (sddiv, @maxScore, [
-                "#000000", "#7F007F", "#7F0000", "#7F7F00", "#007F00", "#007F7F", "#00007F"
+                "#FFB0FF", "#B0B0FF", "#B0FFFF", "#B0FFB0", "#FFFFB0", "#FFB0B0"
             ]);
-            var gameManager = GameManager (playingField, scoreDisplay);
+            var gameManager = GameManager (playingField, scoreDisplay, "@playerName");
             gameManager.start ("@routes.GameController.socket.webSocketURL()");
         </script>
     </body>

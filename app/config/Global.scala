@@ -11,17 +11,14 @@ import services.GameActor
   */
 
 object Global extends GlobalSettings {
-  def gameActor: ActorRef = _gameActor
-  def nextId: Int = {
-    val retval = _nextId
-    _nextId += 1
-    retval
-  }
+  var gameActorGetter = {() => GameActor (maxScore) (Akka.system)}
 
-  private var _nextId = 0
+  def maxScore = 100
+  def gameActor: ActorRef = _gameActor
+
   private var _gameActor: ActorRef = null
 
   override def onStart (app: Application): Unit = {
-    _gameActor = GameActor (Akka.system)
+    _gameActor = gameActorGetter ()
   }
 }

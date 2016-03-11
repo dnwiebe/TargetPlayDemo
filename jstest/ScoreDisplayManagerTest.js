@@ -19,7 +19,11 @@ describe ("A ScoreDisplayManager with a div and a bunch of colors", function () 
     describe ("when directed to show three scores", function () {
 
         beforeEach (function () {
-            subject.showScores ([34, 45, 56]);
+            subject.showScores ([
+                {id: 1, name: "Freddie", score: 34},
+                {id: 2, name: "Billy", score: 45},
+                {id: 3, name: "Stanley", score: 56}
+            ]);
         });
 
         it ("shows three score bars of the appropriate color, size, and position", function () {
@@ -31,7 +35,11 @@ describe ("A ScoreDisplayManager with a div and a bunch of colors", function () 
         describe ("then three different scores", function () {
 
             beforeEach(function () {
-                subject.showScores([45, 56, 78]);
+                subject.showScores([
+                    {id: 1, name: "Freddie", score: 45},
+                    {id: 2, name: "Billy", score: 56},
+                    {id: 3, name: "Stanley", score: 78}
+                ]);
             });
 
             it("shows three score bars of the appropriate color, size, and position", function () {
@@ -43,7 +51,12 @@ describe ("A ScoreDisplayManager with a div and a bunch of colors", function () 
             describe("then four scores", function () {
 
                 beforeEach(function () {
-                    subject.showScores([34, 45, 56, 78]);
+                    subject.showScores([
+                        {id: 1, name: "Freddie", score: 34},
+                        {id: 2, name: "Billy", score: 45},
+                        {id: 3, name: "Stanley", score: 56},
+                        {id: 3, name: "Tommy", score: 78}
+                    ]);
                 });
 
                 it("shows four score bars of the appropriate color, size, and position", function () {
@@ -56,7 +69,10 @@ describe ("A ScoreDisplayManager with a div and a bunch of colors", function () 
                 describe("then two scores", function () {
 
                     beforeEach(function () {
-                        subject.showScores([34, 45]);
+                        subject.showScores([
+                            {id: 1, name: "Freddie", score: 34},
+                            {id: 2, name: "Billy", score: 45}
+                        ]);
                     });
 
                     it("shows two score bars of the appropriate color, size, and position", function () {

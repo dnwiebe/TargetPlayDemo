@@ -41,7 +41,14 @@ Utils = function () {
 
         ws.send = function (type, data) {
             var msg = JSON.stringify ({type: type, data: data});
-            socket.send (msg)
+            try {
+                socket.send(msg);
+                return true;
+            }
+            catch (e) {
+                console.log (e.message);
+                return false;
+            }
         };
 
         ws.replaceEvents = function (events) {

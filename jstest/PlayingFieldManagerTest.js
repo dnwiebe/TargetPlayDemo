@@ -92,8 +92,8 @@ describe ("A PlayingFieldManager with a div and a mock RNG", function () {
                     " o'clock and " + (moveTarget ? "moves" : "leaves") + " target", function () {
                     var hit = toRect(oclock, distance);
                     var event = new MouseEvent("click", {
-                        offsetX: hit.x,
-                        offsetY: hit.y,
+                        clientX: hit.x,
+                        clientY: hit.y,
                         buttons: 1
                     });
                     score = 0;
