@@ -12,21 +12,24 @@ import services.IncomingActor
   * Created by dnwiebe on 3/6/16.
   */
 
-case class UserData (name: String)
-
 trait GameController {
   this: Controller =>
 
+  import GameController._
+
   def index = Action {
-    Ok (views.html.front_page ())
+    Ok (views.html.front_page (makeUserDataForm))
   }
 
   def startOrJoin = Action {implicit request =>
-    Form (
-      mapping (
-        "name" -> text
-      )(UserData.apply)(UserData.unapply)
-    ).bindFromRequest.fold (handleStartOrJoinFormWithErrors, handleStartOrJoinForm)
+    makeUserDataForm.bindFromRequest.fold (
+      {form => BadRequest (views.html.front_page (form))},
+      {userData => Redirect (routes.GameController.gamePage (userData.name))}
+    )
+  }
+
+  def gamePage (name: String) = Action {implicit request =>
+    Ok (views.html.game_page (Global.maxScore, name))
   }
 
   // It's unclear how to unit-test this
@@ -34,22 +37,15 @@ trait GameController {
     IncomingActor.props (out, Global.gameActor)
   }
 
-  private def handleStartOrJoinForm (userData: UserData) (implicit request: RequestHeader): Result = {
-    if (validateUserData (userData)) {
-      Ok (views.html.game_page (Global.maxScore, userData.name))
-    }
-    else {
-      Ok (views.html.front_page ())
-    }
-  }
-
-  private def handleStartOrJoinFormWithErrors (form: Form[UserData]): Result = {
-    Ok (views.html.front_page ())
-  }
-
-  private def validateUserData (userData: UserData): Boolean = {
-    !userData.name.isEmpty
+  private def makeUserDataForm: Form[UserData] = {
+    Form (
+      mapping (
+        "name" -> nonEmptyText
+      )(UserData.apply)(UserData.unapply)
+    )
   }
 }
 
-object GameController extends Controller with GameController
+object GameController extends Controller with GameController {
+  case class UserData (name: String)
+}

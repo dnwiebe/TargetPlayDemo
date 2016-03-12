@@ -17,3 +17,11 @@
 h1, h2, span, div, p {
     font-family: sans-serif
 }
+
+.error {
+    color: red;
+}
+
+.info {
+    color: blue;
+}

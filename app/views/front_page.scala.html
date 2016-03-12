@@ -1,4 +1,8 @@
-@()
+@import play.api.Play.current
+@import play.api.i18n.Messages.Implicits._
+@import controllers.GameController.UserData
+
+@(userDataForm: Form[UserData])
 
 <html>
     <head>
@@ -11,11 +15,12 @@
             <p>Click "Start or Join" and then click the archery target as many times as you can, as quickly
             as you can.  Clicks nearer the center of the target produce higher scores.  The first player to
             extend his progress bar across the screen wins.</p>
+            <p>Please enter your name below.</p>
         </div>
         <div>
-        @helper.form(action = routes.GameController.startOrJoin()) {
-            <div><label for="name-field">Your name:&nbsp;</label><input id="name-field" type="text" name="name"></div>
-            <div><input type="submit" name="submit" value="Start or Join"></div>
+        @helper.form(action = routes.GameController.startOrJoin) {
+            @helper.inputText(userDataForm ("name"), 'id -> "name-field", 'name -> "name")
+            <input type="submit" name="submit" value="Start or Join">
         }
         </div>
     </body>

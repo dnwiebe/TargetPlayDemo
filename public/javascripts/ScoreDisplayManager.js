@@ -81,7 +81,8 @@ var ScoreDisplayManager = function (div, maxScore, colors) {
         if (!winnerBar) {return;}
         var onColor = winnerBar.style.backgroundColor;
         var offColor = foregroundColor(onColor);
-        var flashes = [offColor, onColor, offColor, onColor, offColor, onColor, offColor, onColor, offColor, onColor];
+        var flashPair = [offColor, onColor];
+        var flashes = flashPair.concat (flashPair, flashPair, flashPair, flashPair);
         flash (flashes, winnerBar);
     };
 
