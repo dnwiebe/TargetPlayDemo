@@ -48,6 +48,18 @@ class GameControllerTest extends path.FunSpec {
       }
     }
 
+    describe ("asked to start or join, with a script in the form") {
+      val request = FakeRequest ("POST", "path").withFormUrlEncodedBody(("name", "<script>alert('Hi!');</script>"))
+      val resultFuture = subject.startOrJoin(request)
+
+      it ("presents the front page again, but with an error status and message") {
+        assert (status (resultFuture) === 400)
+        val bodyText = contentAsString (resultFuture)
+        assert (bodyText.contains ("Start or Join"))
+        assert (bodyText.contains ("Script injection?"))
+      }
+    }
+
     describe ("asked for the game page with a name") {
       val request = FakeRequest ("GET", "path")
       val resultFuture = subject.gamePage ("Pudge").apply (request)
