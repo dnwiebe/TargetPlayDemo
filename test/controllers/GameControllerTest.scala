@@ -26,42 +26,48 @@ class GameControllerTest extends path.FunSpec {
       }
     }
 
-    describe ("asked to start or join, with a name in the form") {
-      val request = FakeRequest ("POST", "path").withFormUrlEncodedBody(("name", "Pudge"))
-      val resultFuture = subject.startOrJoin(request)
+    describe ("asked to start or join") {
+      describe ("with a name in the form") {
+        val request = FakeRequest ("POST", "path").withFormUrlEncodedBody (("name", "Pudge"))
 
-      it ("redirects to the game page with the supplied name") {
-        assert (status (resultFuture) === 303)
-        assert (redirectLocation (resultFuture) === Some ("/game_page/Pudge"))
+        val resultFuture = subject.startOrJoin (request)
+
+        it ("redirects to the game page with the supplied name") {
+          assert (status (resultFuture) === 303)
+          assert (redirectLocation (resultFuture) === Some ("/game_page/Pudge"))
+        }
       }
-    }
 
-    describe ("asked to start or join, with no name in the form") {
-      val request = FakeRequest ("POST", "path").withFormUrlEncodedBody(("name", ""))
-      val resultFuture = subject.startOrJoin(request)
+      describe ("with no name in the form") {
+        val request = FakeRequest ("POST", "path").withFormUrlEncodedBody (("name", ""))
 
-      it ("presents the front page again, but with an error status and message") {
-        assert (status (resultFuture) === 400)
-        val bodyText = contentAsString (resultFuture)
-        assert (bodyText.contains ("Start or Join"))
-        assert (bodyText.contains ("This field is required"))
+        val resultFuture = subject.startOrJoin (request)
+
+        it ("presents the front page again, but with an error status and message") {
+          assert (status (resultFuture) === 400)
+          val bodyText = contentAsString (resultFuture)
+          assert (bodyText.contains ("Start or Join"))
+          assert (bodyText.contains ("This field is required"))
+        }
       }
-    }
 
-    describe ("asked to start or join, with a script in the form") {
-      val request = FakeRequest ("POST", "path").withFormUrlEncodedBody(("name", "<script>alert('Hi!');</script>"))
-      val resultFuture = subject.startOrJoin(request)
+      describe ("with a script in the form") {
+        val request = FakeRequest ("POST", "path").withFormUrlEncodedBody (("name", "<script>alert('Hi!');</script>"))
 
-      it ("presents the front page again, but with an error status and message") {
-        assert (status (resultFuture) === 400)
-        val bodyText = contentAsString (resultFuture)
-        assert (bodyText.contains ("Start or Join"))
-        assert (bodyText.contains ("Script injection?"))
+        val resultFuture = subject.startOrJoin (request)
+
+        it ("presents the front page again, but with an error status and message") {
+          assert (status (resultFuture) === 400)
+          val bodyText = contentAsString (resultFuture)
+          assert (bodyText.contains ("Start or Join"))
+          assert (bodyText.contains ("Script injection?"))
+        }
       }
     }
 
     describe ("asked for the game page with a name") {
       val request = FakeRequest ("GET", "path")
+
       val resultFuture = subject.gamePage ("Pudge").apply (request)
 
       it ("presents a page that loads the proper JavaScript") {
