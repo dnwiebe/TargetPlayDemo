@@ -27,31 +27,29 @@ object DatabaseActor {
 
   var _withConnection: (Connection => Any) => Any = {block => DB.withConnection[Any] (block)}
 
-  def createTables (): Unit = {
-    withConnection {implicit conn =>
-      ddl ("""
-         | create table games (
-         |   id bigint auto_increment primary key,
-         |   timestamp bigint not null,
-         |   winner bigint null
-         | )
-       """.stripMargin)
-      ddl ("""
-         | create table players (
-         |   id bigint auto_increment primary key,
-         |   name varchar not null
-         | )
-       """.stripMargin)
-      ddl ("""
-         | create table hits (
-         |   id bigint auto_increment primary key,
-         |   timestamp bigint not null,
-         |   game_id bigint not null,
-         |   player_id bigint not null,
-         |   points int not null
-         | )
-       """.stripMargin)
-    }
+  def createTables (implicit conn: Connection): Unit = {
+    ddl ("""
+       | create table games (
+       |   id bigint auto_increment primary key,
+       |   timestamp bigint not null,
+       |   winner bigint null
+       | )
+     """.stripMargin)
+    ddl ("""
+       | create table players (
+       |   id bigint auto_increment primary key,
+       |   name varchar not null
+       | )
+     """.stripMargin)
+    ddl ("""
+       | create table hits (
+       |   id bigint auto_increment primary key,
+       |   timestamp bigint not null,
+       |   game_id bigint not null,
+       |   player_id bigint not null,
+       |   points int not null
+       | )
+     """.stripMargin)
   }
 
   private def ddl (sql: String)(implicit conn: Connection): Unit = {

@@ -19,9 +19,9 @@ object DatabaseActorTest {
   private def ensureTableCreation () = {
     if (!created) {
       DriverManager.registerDriver (new org.h2.Driver ())
-      val conn = DriverManager.getConnection ("jdbc:h2:mem:test")
+      val conn = DriverManager.getConnection ("jdbc:h2:mem:databaseactortest")
       DatabaseActor._withConnection = { block => block (conn) }
-      DatabaseActor.createTables ()
+      DatabaseActor.withConnection {conn => DatabaseActor.createTables (conn)}
       created = true
     }
   }
@@ -34,7 +34,7 @@ class DatabaseActorTest extends TestKit(ActorSystem ()) with path.FunSpecLike {
     ensureTableCreation()
 
     describe ("a DatabaseActor") {
-      implicit val conn = DriverManager.getConnection ("jdbc:h2:mem:test")
+      implicit val conn = DriverManager.getConnection ("jdbc:h2:mem:databaseactortest")
       val subject = TestActorRef (new DatabaseActor ())
       val recorder = Recorder ()
 
@@ -85,6 +85,8 @@ class DatabaseActorTest extends TestKit(ActorSystem ()) with path.FunSpecLike {
           assert (hits === List ((1234L, 2345L, 3456L, 7)))
         }
       }
+
+      conn.close ()
     }
   }
 

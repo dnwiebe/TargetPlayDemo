@@ -1,5 +1,7 @@
 package config
 
+import java.sql.DriverManager
+
 import akka.actor.ActorSystem
 import org.scalatest.path
 import services.{DatabaseActor, GameActor}
