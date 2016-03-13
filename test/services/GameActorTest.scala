@@ -18,7 +18,8 @@ class GameActorTest (system: ActorSystem) extends TestKit (system) with path.Fun
   }
 
   describe ("A GameActor") {
-    val subject = TestActorRef (new GameActor (100))
+    val database = Recorder ()
+    val subject = TestActorRef (new GameActor (database, 100))
     val unidentified = Recorder ()
     val freddie = Recorder ()
     val hamish = Recorder ()

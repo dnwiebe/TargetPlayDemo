@@ -17,16 +17,14 @@ case class PlayerState (id: Int, name: String, representative: ActorRef, score: 
 }
 
 object GameActor {
-  def apply (limit: Int) (implicit system: ActorSystem): ActorRef = {
-    system.actorOf (Props (classOf[GameActor], limit))
+  def apply (database: ActorRef, limit: Int) (implicit system: ActorSystem): ActorRef = {
+    system.actorOf (Props (classOf[GameActor], database, limit))
   }
 }
 
-class GameActor (limit: Int) extends Actor {
+class GameActor (database: ActorRef, limit: Int) extends Actor {
   private var playerStates: List[PlayerState] = Nil
   private var nextId = 0
-
-  private var entries: List[Entry] = Nil
 
   def receive = {
     case msg: JoinRequest => handleJoinRequest (msg.name)
