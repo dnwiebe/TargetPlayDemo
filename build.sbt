@@ -9,8 +9,7 @@ scalaVersion := "2.11.6"
 libraryDependencies ++= Seq(
   jdbc,
   cache,
-  ws,
-  specs2 % Test,
+  "com.typesafe.play" %% "anorm" % "2.4.0",
   "org.scalatest" % "scalatest_2.11" % "3.0.0-M15" % Test,
   "org.scalatestplus" % "play_2.11" % "1.4.0" % Test,
   "org.mockito" % "mockito-all" % "1.10.19" % Test,
