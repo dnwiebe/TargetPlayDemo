@@ -59,9 +59,9 @@ class IncomingActorTest (system: ActorSystem) extends TestKit (system) with path
 
     describe ("sent a set of progress updates from the back end") {
       subject ! List (
-        PlayerState (321, "Pookie", null, 12),
-        PlayerState (432, "Chubs", null, 23),
-        PlayerState (543, "Bullethead", null, 34)
+        PlayerState (321, None, "Pookie", null, 12),
+        PlayerState (432, None, "Chubs", null, 23),
+        PlayerState (543, None, "Bullethead", null, 34)
       )
 
       it ("passes the message on to the front end") {
