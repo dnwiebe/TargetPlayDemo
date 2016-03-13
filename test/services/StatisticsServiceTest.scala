@@ -5,7 +5,9 @@ import java.sql.{Connection, DriverManager}
 import anorm._
 import org.scalatest.path
 import play.api.Play
+import play.api.db.Databases
 import play.api.test.FakeApplication
+import play.db.Database
 
 /**
   * Created by dnwiebe on 3/13/16.
@@ -26,12 +28,17 @@ object StatisticsServiceTest {
 class StatisticsServiceTest extends path.FunSpec {
   import StatisticsServiceTest._
 
-  val app = FakeApplication ()
+  val app = FakeApplication (additionalConfiguration = Map (
+    "db.default.driver" -> "org.h2.Driver",
+    "db.default.url" -> "jdbc:h2:mem:test",
+    "db.default.username" -> "sa",
+    "db.default.password" -> ""
+  ))
   Play.start (app)
 
   describe ("Given an empty in-memory database") {
     ensureTableCreation()
-    implicit val conn = DriverManager.getConnection ("jdbc:h2:mem:test")
+    implicit val conn = DriverManager.getConnection ("jdbc:h2:mem:statisticsservicetest")
     val subject = new StatisticsService ()
 
     describe ("and asked for accuracy stats") {

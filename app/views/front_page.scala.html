@@ -1,8 +1,9 @@
 @import play.api.Play.current
 @import play.api.i18n.Messages.Implicits._
 @import controllers.GameController.UserData
+@import services.AccuracyStats
 
-@(userDataForm: Form[UserData])
+@(userDataForm: Form[UserData], accuracyStats: List[AccuracyStats])
 
 <html>
     <head>
@@ -12,6 +13,19 @@
         <div>
             <h2>Columbus Scala Enthusiasts</h2>
             <p>Small demo using the Play framework and Web Sockets.</p>
+            @if(accuracyStats != Nil) {
+                <h3>Hall of Average Fame</h3>
+                <table>
+                    <thead>
+                        <tr><td>Name</td><td>Average</td></tr>
+                    </thead>
+                    <tbody>
+                        @for(stats <- accuracyStats) {
+                          <tr><td>@(stats.name)</td><td>@(stats.average)</td></tr>
+                        }
+                    </tbody>
+                </table>
+            }
             <p>Click "Start or Join" and then click the archery target as many times as you can, as quickly
             as you can.  Clicks nearer the center of the target produce higher scores.  The first player to
             extend his progress bar across the screen wins.</p>

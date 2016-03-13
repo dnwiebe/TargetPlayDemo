@@ -19,12 +19,13 @@ trait GameController {
   import GameController._
 
   def index = Action {
-    Ok (views.html.front_page (makeUserDataForm))
+    val accuracyStats = Global.statisticsService.accuracyStats()
+    Ok (views.html.front_page (makeUserDataForm, accuracyStats))
   }
 
   def startOrJoin = Action {implicit request =>
     makeUserDataForm.bindFromRequest.fold (
-      {form => BadRequest (views.html.front_page (form))},
+      {form => BadRequest (views.html.front_page (form, Global.statisticsService.accuracyStats()))},
       {userData => Redirect (routes.GameController.gamePage (userData.name))}
     )
   }
