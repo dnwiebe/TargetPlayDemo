@@ -9,6 +9,7 @@ scalaVersion := "2.11.6"
 libraryDependencies ++= Seq(
   jdbc,
   cache,
+  evolutions,
   "com.typesafe.play" %% "anorm" % "2.4.0",
   "org.scalatest" % "scalatest_2.11" % "3.0.0-M15" % Test,
   "org.scalatestplus" % "play_2.11" % "1.4.0" % Test,
@@ -21,6 +22,5 @@ resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
 // Play provides two styles of routers, one expects its actions to be injected, the
 // other, legacy style, accesses its actions statically.
 //routesGenerator := InjectedRoutesGenerator
-
 
 fork in run := true
