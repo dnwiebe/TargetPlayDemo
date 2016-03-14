@@ -24,7 +24,6 @@ object DatabaseActor {
   }
 
   def withConnection[A] (block: Connection => A): A = {_withConnection (block).asInstanceOf[A]}
-
   var _withConnection: (Connection => Any) => Any = {block => DB.withConnection[Any] (block)}
 
   def createTables (implicit conn: Connection): Unit = {

@@ -113,3 +113,6 @@ crashlytics.properties
 crashlytics-build.properties
 
 hs_err_*.log
+.sbtserver/
+project/.sbtserver*
+.~lock.*

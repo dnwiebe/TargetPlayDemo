@@ -19,7 +19,7 @@
             var targimg = document.getElementById ("target");
             var playingField = PlayingFieldManager (pfdiv, targimg);
             var scoreDisplay = ScoreDisplayManager (sddiv, @maxScore, [
-                "#FFB0FF", "#B0B0FF", "#B0FFFF", "#B0FFB0", "#FFFFB0", "#FFB0B0"
+                "#FFA0A0", "#FFFFA0", "#A0FFA0", "#A0FFFF", "#A0A0FF", "#FFA0FF"
             ]);
             var gameManager = GameManager (playingField, scoreDisplay, "@playerName");
             gameManager.start ("@routes.GameController.socket.webSocketURL()");

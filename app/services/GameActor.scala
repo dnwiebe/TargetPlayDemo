@@ -31,9 +31,11 @@ class GameActor (database: ActorRef, limit: Int) extends Actor {
   private var gameId: Option[Long] = null
 
   def receive = {
+    // From IncomingActor
     case JoinRequest (name) => handleJoinRequest (name)
     case ScoreIncrement (id, increment) => handleScoreIncrement (id, increment)
 
+    // From DatabaseActor
     case GameId (id) => handleGameId (id)
     case PlayerId (name, id) => handlePlayerId (name, id)
   }
@@ -45,17 +47,8 @@ class GameActor (database: ActorRef, limit: Int) extends Actor {
     }
     database ! PlayerEntry (name)
     playerStates.find {_.name == name} match {
-      case Some (existingPlayer) => {
-        val replacement = PlayerState (existingPlayer.id, existingPlayer.dbId, existingPlayer.name, sender, existingPlayer.score)
-        existingPlayer.representative ! PoisonPill
-        playerStates = playerStates.map {p => if (p.id == existingPlayer.id) replacement else p}
-        sender ! Invitation (existingPlayer.id, name)
-      }
-      case None => {
-        playerStates = playerStates ++ List (PlayerState (nextId, None, name, sender, 0))
-        sender ! Invitation (nextId, name)
-        nextId += 1
-      }
+      case Some (existingPlayer) => rejoinExistingPlayer (existingPlayer)
+      case None => joinNewPlayer (name)
     }
     publishScores ()
   }
@@ -102,6 +95,17 @@ class GameActor (database: ActorRef, limit: Int) extends Actor {
     playerStates = Nil
   }
 
-  private case class Entry (id: Int, representative: ActorRef, var score: Int)
+  private def rejoinExistingPlayer (existingPlayer: PlayerState): Unit = {
+    val replacement = PlayerState (existingPlayer.id, existingPlayer.dbId, existingPlayer.name, sender, existingPlayer.score)
+    existingPlayer.representative ! PoisonPill
+    playerStates = playerStates.map {p => if (p.id == existingPlayer.id) replacement else p}
+    sender ! Invitation (existingPlayer.id, existingPlayer.name)
+  }
+
+  private def joinNewPlayer (name: String): Unit = {
+    playerStates = playerStates ++ List (PlayerState (nextId, None, name, sender, 0))
+    sender ! Invitation (nextId, name)
+    nextId += 1
+  }
 }
 
