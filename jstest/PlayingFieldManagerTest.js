@@ -37,25 +37,6 @@ describe ("A PlayingFieldManager with a div and a mock RNG", function () {
             expect (target.style.top).toBe ("200px");
         });
 
-        describe ("and clicked in the center of the target", function () {
-            beforeEach (function () {
-                var event = new MouseEvent ("click", {
-                    clientX: 50,
-                    clientY: 50,
-                    buttons: 1
-                });
-                target.dispatchEvent (event);
-            });
-
-            it ("adds eleven points to the score and moves the target", function () {
-                expect (score).toBe (11);
-                expect (target.style.position).toBe ("relative");
-                expect (target.style.visibility).toBe ("visible");
-                expect (target.style.left).toBe ("300px");
-                expect (target.style.top).toBe ("400px");
-            });
-        });
-
         describe ("and clicked in various places on the target", function () {
             var parameterSets = [
                 {oclock: 12, distance: 0, expectedScore: 11, moveTarget: true},
@@ -177,7 +158,7 @@ describe ("A PlayingFieldManager with a div and a mock RNG", function () {
         var div = document.createElement ("DIV");
         div.innerHTML =
             '<div id="sample-div" style="width:1100px; height:1100px; background-color:#202020;">\n' +
-            '  <img id="sample-target" src="../../public/images/target.png">\n' +
+            '  <img id="sample-target" src="../../public/images/target.png" width="100" height="100">\n' +
             '</div>\n';
         var body = document.getElementsByTagName ("BODY")[0];
         body.appendChild (div);
@@ -194,6 +175,7 @@ describe ("A PlayingFieldManager with a div and a mock RNG", function () {
         var radians = degreesCCWFromRight * 2.0 * Math.PI / 360.0;
         var x = Math.sin (radians) * distance;
         var y = Math.cos (radians) * distance;
-        return {x: x + 50, y: y + 50};
+        var targetRect = document.getElementById ("sample-target").getBoundingClientRect ();
+        return {x: x + 50 + targetRect.left, y: y + 50 + targetRect.top};
     }
 });

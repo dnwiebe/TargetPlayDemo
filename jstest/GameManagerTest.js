@@ -3,7 +3,7 @@
  */
 
 describe ("A GameManager with playing field and score display mocked", function () {
-    var url = "http://blah";
+    var expectedUrl = "http://blah";
     var subject = null;
     var playingField = null;
     var scoreDisplay = null;
@@ -25,9 +25,14 @@ describe ("A GameManager with playing field and score display mocked", function 
 
     describe ("instructed to start a game", function () {
         var scoreCallback = null;
+        var actualUrl = null;
+        var actualOpen = null;
 
         beforeEach (function () {
-            subject.start (url);
+            subject.start (expectedUrl);
+            var websocketArgs = Utils.websocket.calls.mostRecent ().args;
+            actualUrl = websocketArgs[0];
+            actualOpen = websocketArgs[1].open;
             scoreCallback = playingField.setScoreCallback.calls.mostRecent ().args[0];
         });
 
@@ -41,11 +46,18 @@ describe ("A GameManager with playing field and score display mocked", function 
 
         it ("initializes the web socket", function () {
             expect (Utils.websocket).toHaveBeenCalled ();
-            expect (Utils.websocket.calls.mostRecent ().args[0]).toBe (url);
+            expect (actualUrl).toBe (expectedUrl);
         });
 
-        it ("sends a join request to the back end", function () {
-            expect (webSocket.send).toHaveBeenCalledWith ("joinRequest", {name: "Pudge"});
+        describe ("passes an open handler that, when called", function () {
+
+            beforeEach (function () {
+                actualOpen ();
+            });
+
+            it ("sends a join request to the back end", function () {
+                expect (webSocket.send).toHaveBeenCalledWith ("joinRequest", {name: "Pudge"});
+            });
         });
 
         describe ("and being in receipt of an invitation", function () {
@@ -102,7 +114,7 @@ describe ("A GameManager with playing field and score display mocked", function 
                 describe("informed of a winner", function () {
 
                     beforeEach(function () {
-                        winnerHandler(123, "Moochie");
+                        winnerHandler({id: 123, name: "Moochie"});
                     });
 
                     it("stops the playing field", function () {
